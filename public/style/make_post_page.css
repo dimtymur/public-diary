@@ -1,0 +1,16 @@
+#post-wrap {
+  width: 24em;
+  margin-left: 20px;
+  padding-right: 10px;
+}
+
+#title-inp {
+  width: 95%;
+}
+
+#text-inp {
+  width: 95%;
+  height: 225px;
+  padding-top: 10px;
+  resize: vertical;
+}

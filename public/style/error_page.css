@@ -1,0 +1,21 @@
+.error-page {
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+.error-page-title {
+  font-size: var(--title-size-g);
+  font-family: monospace;
+  letter-spacing: var(--let-space);
+}
+
+.error-page-img {
+  width: 400px;
+  border: white 2px dashed;
+}
+
+.error-page-text {
+  font-size: var(--title-size);
+  color: white;
+}

@@ -1,0 +1,32 @@
+.profile-info {
+  max-height: 1000px;
+  background-color: var(--back-color);
+  border: var(--theme-color) 2px solid;
+  color: white;
+  border-radius: var(--border-rad);
+  font-family: monospace;
+  font-size: var(--title-size);
+  text-align: center;
+}
+#profile-item-icon {
+  filter: invert(1);
+}
+
+.profile-item {
+  padding: 10px;
+}
+
+.profile-title {
+  border-bottom: white 1px solid;
+  margin-left: auto;
+  margin-right: auto;
+  width: 220px;
+  text-align: left;
+  margin-top: 10px;
+  padding: 5px;
+}
+
+#profile-icon {
+  filter: invert(1);
+  width: 100px;
+}

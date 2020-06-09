@@ -1,0 +1,15 @@
+.pagin-arrow {
+  width: 50px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.pagin-cont {
+  margin-top: 25px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+#pagin-prev {
+  transform: scaleX(-1);
+}

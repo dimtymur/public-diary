@@ -1,0 +1,17 @@
+#auth-wrap {
+  width: 18em;
+  margin-left: 20px;
+}
+
+#auth-inp {
+  width: 93%;
+}
+
+#pass-forgot-text {
+  color: white;
+  font-size: var(--desc-size);
+  font-family: monospace;
+  padding-left: 10px;
+  padding-top: 20px;
+  text-decoration: underline;
+}
