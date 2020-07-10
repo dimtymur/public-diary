@@ -5,7 +5,7 @@
   color: white;
   border-radius: var(--border-rad);
   font-family: monospace;
-  font-size: var(--title-size);
+  font-size: var(--title-size-s);
   text-align: center;
 }
 #profile-item-icon {
