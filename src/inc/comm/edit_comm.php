@@ -3,6 +3,7 @@ session_start();
 require_once $dimport["auth/accept_auth.php"]["path"];
 require_once $dimport["inc/gen_funcs.php"]["path"];
 require_once $dimport["security/csrf_prev.php"]["path"];
+require_once $dimport["common/media_funcs.php"]["path"];
 
 if (!csrf_check($csrf_key))
   redirect($dimport["home/home_page.php"]["redirect"]."&error=csrf-error");
@@ -18,6 +19,8 @@ if (empty($post))
 $post = $post[0];
 
 $post_id_uri = "&post-id=".$post['post_id'];
+if (!empty($last_comm_ts) && $within_time($last_comm_ts[0]["comm_ts"], $time))
+    redirect($dimport["post/post_page.php"]["redirect"]."$post_id_uri&error=frequent-comm");
 
 if (empty($_GET["comm-id"]))
   redirect($dimport["post/post_page.php"]["redirect"]."$post_id_uri&error=invalid-comm");

@@ -21,17 +21,16 @@ if (!empty($_GET["post-id"])) {
 	$post_title  = str_replace("~_", "\n", $post_title);
 	$post_text   = $post["text"];
 	$post_text   = str_replace("~_", "\n", $post_text);
-} ?>
+}
 
-<form class="main-wrap"
-			id="post-wrap"
-			<?php
-			if (!empty($post_title) && !empty($post_text))
-				echo "action='".$dimport['post/edit_post.php']['redirect']."&post-id=".$post['post_id']."'";
-			else
-				echo "action='".$dimport['post/make_post.php']['redirect']."'";
-			?>
-			method="POST">
+if (empty($post_title) || empty($post_text)) {
+	$action      = $dimport['post/make_post.php']['redirect'];
+	$post_title  = "";
+	$post_text   = "";
+} else $action = $dimport['post/edit_post.php']['redirect']."&post-id=".$post['post_id'];
+?>
+
+<form class="main-wrap" action="<?= $action ?>" id="post-wrap" method="POST">
 	Title:
 	<input name="title" class="main-inp" id="title-inp" value="<?= $post_title ?>" pattern=".{0,100}" required>
 	<br>
