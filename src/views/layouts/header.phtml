@@ -1,72 +1,60 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8">
-  <title> Public Diary | <?= $title ?> </title>
+    <meta charset="utf-8">
+    <title> Public Diary | <?= $title ?> </title>
 
-  <link type="text/css" rel="stylesheet" href="/style/reset.css">
-  <link type="text/css" rel="stylesheet" href="/style/theme.css">
-  <link type="text/css" rel="stylesheet" href="/style/main.css">
-  <link type="text/css" rel="stylesheet" href="/style/header.css">
-  <link type="text/css" rel="stylesheet" href="/style/profile.css">
-  <link type="text/css" rel="stylesheet" href="/style/auth_page.css">
-  <link type="text/css" rel="stylesheet" href="/style/media.css">
-  <link type="text/css" rel="stylesheet" href="/style/post.css">
-  <link type="text/css" rel="stylesheet" href="/style/navig.css">
-  <link type="text/css" rel="stylesheet" href="/style/drop_down.css">
-  <link type="text/css" rel="stylesheet" href="/style/make_post_page.css">
-  <link type="text/css" rel="stylesheet" href="/style/comm.css">
-  <link type="text/css" rel="stylesheet" href="/style/setts_page.css">
-  <link type="text/css" rel="stylesheet" href="/style/pagin.css">
-  <link type="text/css" rel="stylesheet" href="/style/med_query.css">
+    <link type="text/css" rel="stylesheet" href="/style/reset.css">
+    <link type="text/css" rel="stylesheet" href="/style/theme.css">
+    <link type="text/css" rel="stylesheet" href="/style/main.css">
+    <link type="text/css" rel="stylesheet" href="/style/header.css">
+    <link type="text/css" rel="stylesheet" href="/style/profile.css">
+    <link type="text/css" rel="stylesheet" href="/style/auth_page.css">
+    <link type="text/css" rel="stylesheet" href="/style/media.css">
+    <link type="text/css" rel="stylesheet" href="/style/post.css">
+    <link type="text/css" rel="stylesheet" href="/style/navig.css">
+    <link type="text/css" rel="stylesheet" href="/style/drop_down.css">
+    <link type="text/css" rel="stylesheet" href="/style/make_post_page.css">
+    <link type="text/css" rel="stylesheet" href="/style/comm.css">
+    <link type="text/css" rel="stylesheet" href="/style/setts_page.css">
+    <link type="text/css" rel="stylesheet" href="/style/pagin.css">
+    <link type="text/css" rel="stylesheet" href="/style/med_query.css">
 </head>
 <body>
-  <div class="page-temp">
-    <div tabindex="0" class="nav-tog" id="main-nav-tog">
-      <img src="/img/icons/tog-icon.png">
-    </div>
-    <nav class="main-nav">
-      <ul class="main-loc-nav" id="main-dir-nav">
-        <a href="/index.php?page=home/home_page.php">
-          <li class="main-loc-nav-item" id="main-dir-nav-item" name="home">
-            Home
-          </li>
-        </a>
-        <?php if (isset($_SESSION["u_id"])) { ?>
-        <a href="/index.php?page=profile/profile_page.php&user-id=<?= $_SESSION["u_id"] ?>">
-          <li class="main-loc-nav-item" id="main-dir-nav-item" name="profile">
-            Profile
-          </li>
-        </a>
-        <a href="/index.php?page=post/make_post_page.php">
-          <li class="main-loc-nav-item" id="main-dir-nav-item" name="post">
-            Post
-          </li>
-        </a>
-        <?php } ?>
-      </ul>
-      <ul class="main-loc-nav" id="main-auth-nav">
-        <?php if (isset($_SESSION["u_id"])) { ?>
-        <a href="/index.php?page=auth/logout.php">
-          <li class="main-loc-nav-item" id="main-auth-nav-item" name="logout">
-            Logout
-          </li>
-        </a>
-        <?php } else { ?>
-        <a href="/index.php?page=auth/login_page.php">
-          <li class="main-loc-nav-item" id="main-auth-nav-item" name="login">
-            Login
-          </li>
-        </a>
-        <a href="/index.php?page=auth/signin_page.php">
-          <li class="main-loc-nav-item" id="main-auth-nav-item" name="signin">
-            Signin
-          </li>
-        </a>
-        <?php } ?>
-      </ul>
-    </nav>
+    <div class="page-temp">
+        <div tabindex="0" class="nav-tog" id="main-nav-tog">
+            <img src="/img/icons/tog-icon.png">
+        </div>
+        <nav class="main-nav">
+            <ul class="main-loc-nav" id="main-dir-nav">
+                <a href="/index.php?page=home/home_page.php">
+                    <li class="main-loc-nav-item" id="main-dir-nav-item" name="home"> Home </li>
+                </a>
+                <?php if (isset($_SESSION["u_id"])) { ?>
+                    <a href="/index.php?page=profile/profile_page.php&user-id=<?= $_SESSION["u_id"] ?>">
+                        <li class="main-loc-nav-item" id="main-dir-nav-item" name="profile"> Profile </li>
+                    </a>
+                    <a href="/index.php?page=post/make_post_page.php">
+                        <li class="main-loc-nav-item" id="main-dir-nav-item" name="post"> Post </li>
+                    </a>
+                <?php } ?>
+            </ul>
+            <ul class="main-loc-nav" id="main-auth-nav">
+                <?php if (isset($_SESSION["u_id"])) { ?>
+                    <a href="/index.php?page=auth/logout.php">
+                        <li class="main-loc-nav-item" id="main-auth-nav-item" name="logout"> Logout </li>
+                    </a>
+                <?php } else { ?>
+                    <a href="/index.php?page=auth/login_page.php">
+                        <li class="main-loc-nav-item" id="main-auth-nav-item" name="login"> Login </li>
+                    </a>
+                    <a href="/index.php?page=auth/signin_page.php">
+                        <li class="main-loc-nav-item" id="main-auth-nav-item" name="signin"> Signin </li>
+                    </a>
+                <?php } ?>
+            </ul>
+        </nav>
 
-    <?php if (!empty($header)) include_once "header_bar.phtml" ?>
+        <?php if (!empty($header)) include_once "header_bar.phtml" ?>
 
-    <main class="main-cont">
+        <main class="main-cont">

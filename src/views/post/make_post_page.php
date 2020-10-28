@@ -11,11 +11,11 @@ if (!empty($_GET["post-id"])) {
 
 	$post = $records_get("mpd_post", "post_id", $_GET["post-id"]);
 	if (empty($post))
-	  redirect($dimport["home/home_page.php"]["redirect"]."&error=no-such-post");
+		redirect($dimport["home/home_page.php"]["redirect"]."&error=no-such-post");
 	$post = $post[0];
 
 	if ($post["user_id"] != $_SESSION["u_id"])
-	  redirect($dimport["home/home_page.php"]["redirect"]."&error=not-your-post");
+		redirect($dimport["home/home_page.php"]["redirect"]."&error=not-your-post");
 
 	$post_title  = $post["title"];
 	$post_title  = str_replace("~_", "\n", $post_title);
@@ -27,8 +27,7 @@ if (empty($post_title) || empty($post_text)) {
 	$action      = $dimport['post/make_post.php']['redirect'];
 	$post_title  = "";
 	$post_text   = "";
-} else $action = $dimport['post/edit_post.php']['redirect']."&post-id=".$post['post_id'];
-?>
+} else $action = $dimport['post/edit_post.php']['redirect']."&post-id=".$post['post_id']; ?>
 
 <form class="main-wrap" action="<?= $action ?>" id="post-wrap" method="POST">
 	Title:
@@ -41,5 +40,4 @@ if (empty($post_title) || empty($post_text)) {
 	<button type="submit" name="submit" class="main-btn" id="post-btn"> Post </button>
 </form>
 
-<?php
-include_once $dimport["layouts/footer.phtml"]["path"];
+<?php include_once $dimport["layouts/footer.phtml"]["path"];

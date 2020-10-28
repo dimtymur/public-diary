@@ -4,8 +4,7 @@ require_once $dimport["auth/accept_unauth.php"]["path"];
 require_once $dimport["security/csrf_prev.php"]["path"];
 
 $title = "Signin";
-include_once $dimport["layouts/header.phtml"]["path"];
-?>
+include_once $dimport["layouts/header.phtml"]["path"]; ?>
 
 <form class="main-wrap"
 			id="auth-wrap"
@@ -23,5 +22,4 @@ include_once $dimport["layouts/header.phtml"]["path"];
 	<button type="submit" name="submit" class="main-btn"> Signin </button>
 </form>
 
-<?php
-include_once $dimport["layouts/footer.phtml"]["path"];
+<?php include_once $dimport["layouts/footer.phtml"]["path"];

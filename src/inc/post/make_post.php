@@ -26,13 +26,13 @@ if (!(strlen($title) < 100) || !(strlen($text) < 10000))
 require_once $dimport["db/db_funcs.php"]["path"];
 
 $record_add(
-  "mpd_post",
-  [
-    "title"    => $title,
-    "text"     => $text,
-    "user_id"  => $_SESSION["u_id"],
-    "post_dt"  => date("Y-m-d H:i:s")
-  ]
+    "mpd_post",
+    [
+        "title"    => $title,
+        "text"     => $text,
+        "user_id"  => $_SESSION["u_id"],
+        "post_dt"  => date("Y-m-d H:i:s")
+    ]
 );
 
 $last_post_query = "SELECT * FROM mpd_post

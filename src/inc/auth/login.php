@@ -5,22 +5,22 @@ require_once $dimport["inc/gen_funcs.php"]["path"];
 require_once $dimport["security/csrf_prev.php"]["path"];
 
 if (!csrf_check($csrf_key))
-  redirect($dimport["auth/login_page.php"]["redirect"]."&error=csrf-error");
+    redirect($dimport["auth/login_page.php"]["redirect"]."&error=csrf-error");
 
 if (!isset($_POST["submit"]))
-  redirect($dimport["auth/login_page.php"]["redirect"]."&error=submit-error");
+    redirect($dimport["auth/login_page.php"]["redirect"]."&error=submit-error");
 
 require_once $dimport["user/user_funcs.php"]["path"];
 
 if (!$uname_validate($_POST["username"], false))
-  redirect($dimport["auth/login_page.php"]["redirect"]."&error=invalid-username");
+    redirect($dimport["auth/login_page.php"]["redirect"]."&error=invalid-username");
 $user = $records_get("mpd_user", "username", $_POST["username"])[0];
 
 if ($email_ver_get($user["user_id"]))
-  redirect($dimport["auth/login_page.php"]["redirect"]."&error=unverified-user");
+    redirect($dimport["auth/login_page.php"]["redirect"]."&error=unverified-user");
 
 if (!$passwd_validate($_POST["password"], $user["passwd"], false))
-  redirect($dimport["auth/login_page.php"]["redirect"]."&error=invalid-password");
+    redirect($dimport["auth/login_page.php"]["redirect"]."&error=invalid-password");
 
 $_SESSION["csrf_key"]  = bin2hex(random_bytes(32));
 $_SESSION["u_id"]      = $user["user_id"];

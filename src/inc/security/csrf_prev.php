@@ -7,7 +7,7 @@ $csrf_key = hash_hmac("sha256", "message", $_SESSION["csrf_key"]);
 $csrf_form_get = "<input type='hidden' name='csrf_key' value='".$csrf_key."'>";
 
 function csrf_check($csrf_key) {
-  if (!isset($_POST["submit"]) && empty($_POST["csrf_key"])) return false;
-  if (!hash_equals($csrf_key, $_POST["csrf_key"])) return false;
-  return true;
+    if (!isset($_POST["submit"]) && empty($_POST["csrf_key"])) return false;
+    if (!hash_equals($csrf_key, $_POST["csrf_key"])) return false;
+    return true;
 }

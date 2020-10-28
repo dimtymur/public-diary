@@ -33,12 +33,12 @@ if (!(strlen($comm_text) < 8000))
     redirect($dimport["post/post_page.php"]["redirect"]."$post_id_uri&error=invalid-input");
 
 $record_add(
-  "mpd_comm",
-  [
-    "comm"     => $comm_text,
-    "user_id"  => $_SESSION["u_id"],
-    "post_id"  => $post["post_id"],
-    "comm_dt"  => date("Y-m-d H:i:s")
-  ]
+    "mpd_comm",
+    [
+        "comm"     => $comm_text,
+        "user_id"  => $_SESSION["u_id"],
+        "post_id"  => $post["post_id"],
+        "comm_dt"  => date("Y-m-d H:i:s")
+    ]
 );
 redirect($dimport["post/post_page.php"]["redirect"]."$post_id_uri&success=comm-submitted");

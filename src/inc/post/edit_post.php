@@ -36,9 +36,9 @@ if (!(strlen($title) < 100) || !(strlen($text) < 10000))
     redirect($dimport["post/make_post_page.php"]["redirect"]."$post_id_uri&error=invalid-input");
 
 $records_edit(
-  "mpd_post",
-  "post_id",
-  $post["post_id"],
-  ["title" => $title, "text" => $text]
+    "mpd_post",
+    "post_id",
+    $post["post_id"],
+    ["title" => $title, "text" => $text]
 );
 redirect($dimport["post/post_page.php"]["redirect"]."$post_id_uri&success=post-edited");

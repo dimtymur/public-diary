@@ -4,13 +4,12 @@ require_once $dimport["auth/accept_unauth.php"]["path"];
 require_once $dimport["security/csrf_prev.php"]["path"];
 
 $title = "Login";
-include_once $dimport["layouts/header.phtml"]["path"];
-?>
+include_once $dimport["layouts/header.phtml"]["path"]; ?>
 
 <form class="main-wrap"
-			id="auth-wrap"
-			action="<?= $dimport['auth/login.php']['redirect'] ?>"
-			method="POST">
+			 id="auth-wrap"
+			 action="<?= $dimport['auth/login.php']['redirect'] ?>"
+			 method="POST">
 	Username:
 	<input name="username" class="main-inp" id="auth-inp" pattern="[a-zA-Z0-9_-]{3,20}" required>
 	Password:
@@ -22,5 +21,4 @@ include_once $dimport["layouts/header.phtml"]["path"];
 	</a>
 </form>
 
-<?php
-include_once $dimport["layouts/footer.phtml"]["path"];
+<?php include_once $dimport["layouts/footer.phtml"]["path"];

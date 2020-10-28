@@ -1,5 +1,5 @@
 <?php
 if (!empty($_SESSION["u_id"])) {
 	require_once $dimport["inc/gen_funcs.php"]["path"];
-  redirect($dimport["home/home_page.php"]["redirect"]);
+	redirect($dimport["home/home_page.php"]["redirect"]);
 }

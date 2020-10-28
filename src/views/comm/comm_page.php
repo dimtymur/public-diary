@@ -5,11 +5,10 @@ require_once $dimport["inc/gen_funcs.php"]["path"];
 require_once $dimport["db/db_funcs.php"]["path"];
 
 if (empty($_GET["user-id"]))
-  redirect($dimport["home/home_page.php"]["redirect"]."&error=invalid-user-id");
+    redirect($dimport["home/home_page.php"]["redirect"]."&error=invalid-user-id");
 
 $user = $records_get("mpd_user", "user_id", $_GET["user-id"]);
-if (empty($user))
-  $get_error_page("User Not Found", "/img/error/nouser.gif");
+if (empty($user)) $get_error_page("User Not Found", "/img/error/nouser.gif");
 $user = $user[0];
 
 require_once $dimport["comm/filter_comm.php"]["path"];
@@ -22,11 +21,10 @@ $query_comm = "SELECT * FROM $table
 $comms = $sql_query($query_comm);
 
 $title = $user["username"]."'s Comments";
-include_once $dimport["layouts/header.phtml"]["path"];
-?>
+include_once $dimport["layouts/header.phtml"]["path"]; ?>
 
 <div class="mid-cont">
-  <?php require_once $dimport["comm/comm_cont.php"]["path"] ?>
+    <?php require_once $dimport["comm/comm_cont.php"]["path"] ?>
 </div>
 
 <?php

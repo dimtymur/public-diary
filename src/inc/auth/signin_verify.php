@@ -5,20 +5,20 @@ require_once $dimport["inc/gen_funcs.php"]["path"];
 require_once $dimport["user/user_funcs.php"]["path"];
 
 if (!$email_ver = $email_ver_get($_SESSION["token_u_id"]))
-  redirect($dimport["home/home_page.php"]["redirect"]."&error=invalid-verify");
+    redirect($dimport["home/home_page.php"]["redirect"]."&error=invalid-verify");
 
 $user = $records_get("mpd_user", "user_id", $email_ver["user_id"]);
 if (empty($user))
-  redirect($dimport["auth/login_page.php"]["redirect"]."&error=invalid-user");
+    redirect($dimport["auth/login_page.php"]["redirect"]."&error=invalid-user");
 $user = $user[0];
 
 if (!$email_ver_validate($email_ver)) {
-  $email_ver_send(
-    $user,
-    "localhost".$dimport["auth/signin_verify.php"]["redirect"],
-    "Account Verification"
-  );
-  redirect($dimport["auth/login_page.php"]["redirect"]."&error=verification-resent");
+    $email_ver_send(
+        $user,
+        "localhost".$dimport["auth/signin_verify.php"]["redirect"],
+        "Account Verification"
+    );
+    redirect($dimport["auth/login_page.php"]["redirect"]."&error=verification-resent");
 }
 
 session_unset();

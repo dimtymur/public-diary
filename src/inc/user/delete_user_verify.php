@@ -5,21 +5,21 @@ require_once $dimport["user/user_funcs.php"]["path"];
 require_once $dimport["inc/gen_funcs.php"]["path"];
 
 if ($email_ver_get($_SESSION["u_id"]))
-  redirect($dimport["setts/del_page.php"]["redirect"]."&error=invalid-verify");
+    redirect($dimport["setts/del_page.php"]["redirect"]."&error=invalid-verify");
 
 $user = $records_get("mpd_user", "user_id", $_SESSION["u_id"]);
 if (empty($user))
-  redirect($dimport["setts/del_page.php"]["redirect"]."&error=invalid-user");
+    redirect($dimport["setts/del_page.php"]["redirect"]."&error=invalid-user");
 $user = $user[0];
 
 if (!$email_ver_validate($_SESSION)) {
-  $email_ver_send(
-    $user,
-    "localhost".$dimport["user/delete_user_verify.php"]["redirect"],
-    "Account Delete Verification",
-    ["sess" => true]
-  );
-  redirect($dimport["setts/del_page.php"]["redirect"]."&error=email-resent");
+    $email_ver_send(
+        $user,
+        "localhost".$dimport["user/delete_user_verify.php"]["redirect"],
+        "Account Delete Verification",
+        ["sess" => true]
+    );
+    redirect($dimport["setts/del_page.php"]["redirect"]."&error=email-resent");
 }
 
 $records_delete("mpd_user", "user_id", $user["user_id"]);
