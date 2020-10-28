@@ -5,7 +5,7 @@ if (!empty($_GET["step"]) && ctype_digit($_GET["step"])) $pagin_page = $_GET["st
 $pagin_start = $pagin_amt*$pagin_page;
 
 if (!empty($user)) {
-    include_once $dimport["profile/profile_menu.php"]["path"];
+    include_once $dimport["profile/profile_menu.phtml"]["path"];
     $filters[] = "mpd_post.user_id = ".$user["user_id"];
 }
 

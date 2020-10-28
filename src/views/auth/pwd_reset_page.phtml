@@ -4,7 +4,7 @@ require_once $dimport["security/csrf_prev.php"]["path"];
 require_once $dimport["user/user_funcs.php"]["path"];
 
 if ($email_ver_get($user["user_id"]))
-    redirect($dimport["auth/pwd_reset_page.php"]["redirect"]."&error=unverified-user");
+    redirect($dimport["auth/pwd_reset_page.phtml"]["redirect"]."&error=unverified-user");
 
 $title = "Reset Password";
 include_once $dimport["layouts/header.phtml"]["path"]; ?>

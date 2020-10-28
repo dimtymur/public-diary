@@ -13,8 +13,8 @@
                    LIMIT $pagin_start,$pagin_amt;";
 
     $posts = $sql_query($query_post, [$search_val, $search_val]);
-    require_once $dimport["post/post_cont.php"]["path"];
+    require_once $dimport["post/post_cont.phtml"]["path"];
     ?>
 </div>
 
-<?php require_once $dimport["common/pagin.php"]["path"];
+<?php require_once $dimport["common/pagin.phtml"]["path"];

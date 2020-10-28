@@ -16,7 +16,7 @@ include_once $dimport["layouts/header.phtml"]["path"]; ?>
 	<input type="password" name="password" class="main-inp" id="auth-inp" pattern=".{7,}" required>
 	<?= $csrf_form_get ?>
 	<button type="submit" name="submit" class="main-btn"> Login </button>
-	<a href="<?= $dimport['auth/pwd_reset_page.php']['redirect'] ?>">
+	<a href="<?= $dimport['auth/pwd_reset_page.phtml']['redirect'] ?>">
 		<p id="pass-forgot-text"> I Forgot My Password! </p>
 	</a>
 </form>

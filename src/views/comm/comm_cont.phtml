@@ -15,14 +15,14 @@ $query_liked  = "SELECT count(*) AS like_amt
                  WHERE comm_id = ?
                  AND user_id = ?;";
 
-$post_page = $dimport["post/post_page.php"]["redirect"];
+$post_page = $dimport["post/post_page.phtml"]["redirect"];
 foreach ($comms as $comm) {
     $user      = $records_get("mpd_user", "user_id", $comm["user_id"])[0];
     $like_amt  = $sql_query($query_like, [$comm["comm_id"]])[0]["like_amt"];
     $liked     = $sql_query($query_liked, [$comm["comm_id"], $_SESSION["u_id"]])[0]["like_amt"]; ?>
     <div class='media comm' id='<?= $comm["comm_id"] ?>'>
         <div class='media-bar' id='media-bar-top'>
-            <a href='index.php?page=profile/profile_page.php&user-id=<?= $user["user_id"] ?>'>
+            <a href='index.php?page=profile/profile_page.phtml&user-id=<?= $user["user_id"] ?>'>
                 <img src='/img/icons/profile-icon.png' class='media-bar-item' id='post-profile'>
                 <strong id='post-username'> <?= $user["username"] ?> </strong>
             </a>
@@ -56,4 +56,4 @@ foreach ($comms as $comm) {
 <?php }
 
 $alter_form = "comm";
-require $dimport["common/alter_forms.php"]["path"];
+require $dimport["common/alter_forms.phtml"]["path"];

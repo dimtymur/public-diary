@@ -5,11 +5,11 @@ if (!empty($_GET["comm-id"])) {
 
 	$comm = $records_get("mpd_comm", "comm_id", $_GET["comm-id"]);
 	if (empty($comm))
-		redirect($dimport["home/home_page.php"]["redirect"]."&error=invalid-comm");
+		redirect($dimport["home/home_page.phtml"]["redirect"]."&error=invalid-comm");
 	$comm = $comm[0];
 
 	if ($comm["user_id"] != $_SESSION["u_id"])
-		redirect($dimport["home/home_page.php"]["redirect"]."&error=invalid-comm");
+		redirect($dimport["home/home_page.phtml"]["redirect"]."&error=invalid-comm");
 
 	$comm_text = $comm["comm"];
 	$comm_text = str_replace("~_", "\n", $comm_text);

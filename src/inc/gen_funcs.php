@@ -8,5 +8,5 @@ function get($name, $def="") {
 }
 
 $get_error_page = function($title, $error_img) use ($dimport) {
-	require_once $dimport["error/error_page.php"]["path"]; exit();
+	require_once $dimport["error/error_page.phtml"]["path"]; exit();
 };

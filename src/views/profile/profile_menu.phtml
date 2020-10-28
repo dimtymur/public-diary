@@ -13,8 +13,8 @@ $comm_like_amt = $sql_query($comm_like_amt, [$user["user_id"]])[0]["like_amt"];
 
 $like_amt = $post_like_amt + $comm_like_amt;
 
-$comm_page   = $dimport["comm/comm_page.php"]["redirect"];
-$setts_page  = $dimport["setts/setts_page.php"]["redirect"]; ?>
+$comm_page   = $dimport["comm/comm_page.phtml"]["redirect"];
+$setts_page  = $dimport["setts/setts_page.phtml"]["redirect"]; ?>
 <div class='media post'>
     <div class='profile-info'>
         <div class='profile-item'> <img id='profile-icon' src='/img/icons/profile-icon.png'> </div>

@@ -10,8 +10,8 @@ $query_liked  = "SELECT count(*) AS like_amt
                  WHERE post_id = ?
                  AND user_id = ?;";
 
-$post_page       = $dimport["post/post_page.php"]["redirect"];
-$make_post_page  = $dimport["post/make_post_page.php"]["redirect"];
+$post_page       = $dimport["post/post_page.phtml"]["redirect"];
+$make_post_page  = $dimport["post/make_post_page.phtml"]["redirect"];
 foreach ($posts as $post) {
     $user      = $records_get("mpd_user", "user_id", $post["user_id"])[0];
     $like_amt  = $sql_query($query_like, [$post["post_id"]])[0]["like_amt"];
@@ -19,7 +19,7 @@ foreach ($posts as $post) {
     $liked     = $sql_query($query_liked, [$post["post_id"], $_SESSION["u_id"]])[0]["like_amt"]; ?>
     <div class='media post' id='<?= $post["post_id"] ?>'>
         <div class='media-bar' id='media-bar-top'>
-            <a href='index.php?page=profile/profile_page.php&user-id=<?= $user["user_id"] ?>'>
+            <a href='index.php?page=profile/profile_page.phtml&user-id=<?= $user["user_id"] ?>'>
                 <img src='/img/icons/profile-icon.png' class='media-bar-item' id='post-profile'>
                 <strong id='media-username'> <?= $user["username"] ?> </strong>
             </a>
@@ -53,4 +53,4 @@ foreach ($posts as $post) {
 <?php }
 
 $alter_form = "post";
-require $dimport["common/alter_forms.php"]["path"];
+require $dimport["common/alter_forms.phtml"]["path"];

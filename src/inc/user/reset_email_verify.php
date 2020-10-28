@@ -6,18 +6,18 @@ require_once $dimport["user/user_funcs.php"]["path"];
 
 $user = $records_get("mpd_user", "user_id", $_SESSION["u_id"]);
 if (empty($user))
-    redirect($dimport["setts/setts_page.php"]["redirect"]."&error=invalid-user");
+    redirect($dimport["setts/setts_page.phtml"]["redirect"]."&error=invalid-user");
 $user = $user[0];
 
 if ($email_ver_get($user["user_id"]))
-    redirect($dimport["setts/setts_page.php"]["redirect"]."&error=unverified-user");
+    redirect($dimport["setts/setts_page.phtml"]["redirect"]."&error=unverified-user");
 
 if (empty($_SESSION["u_new_email"]))
-    redirect($dimport["setts/setts_page.php"]["redirect"]."&error=invalid-verify");
+    redirect($dimport["setts/setts_page.phtml"]["redirect"]."&error=invalid-verify");
 $new_email = $_SESSION["u_new_email"];
 
 if (!$email_validate($new_email))
-    redirect($dimport["setts/setts_page.php"]["redirect"]."&error=invalid-email");
+    redirect($dimport["setts/setts_page.phtml"]["redirect"]."&error=invalid-email");
 
 if (!$email_ver_validate($_SESSION)) {
     $email_ver_send(
@@ -26,7 +26,7 @@ if (!$email_ver_validate($_SESSION)) {
         "Email Change Verification",
         ["email" => $new_email, "sess" => true]
     );
-    redirect($dimport["setts/setts_page.php"]["redirect"]."&error=email-resent");
+    redirect($dimport["setts/setts_page.phtml"]["redirect"]."&error=email-resent");
 }
 
 $records_edit(
@@ -36,4 +36,4 @@ $records_edit(
     ["email" => $new_email]
 );
 $_SESSION["u_email"] = $new_email;
-redirect($dimport["setts/setts_page.php"]["redirect"]."&success=verification-done");
+redirect($dimport["setts/setts_page.phtml"]["redirect"]."&success=verification-done");

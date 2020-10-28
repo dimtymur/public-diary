@@ -4,12 +4,12 @@ require_once $dimport["security/csrf_prev.php"]["path"];
 require_once $dimport["inc/gen_funcs.php"]["path"];
 require_once $dimport["db/db_funcs.php"]["path"];
 
-if (empty($_GET["user-id"]))
-    redirect($dimport["home/home_page.php"]["redirect"]."&error=invalid-user-id");
+if (empty($_GET["post-id"]))
+    redirect($dimport["home/home_page.phtml"]["redirect"]."&error=invalid-post-id");
 
-$user = $records_get("mpd_user", "user_id", $_GET["user-id"]);
-if (empty($user)) $get_error_page("User Not Found", "/img/error/nouser.gif");
-$user = $user[0];
+$posts = $records_get("mpd_post", "post_id", $_GET["post-id"]);
+if (empty($posts)) $get_error_page("Post Not Found", "/img/error/nopost.gif");
+$post = $posts[0];
 
 require_once $dimport["comm/filter_comm.php"]["path"];
 
@@ -20,14 +20,18 @@ $query_comm = "SELECT * FROM $table
 
 $comms = $sql_query($query_comm);
 
-$title = $user["username"]."'s Comments";
+$title = $post["title"];
 include_once $dimport["layouts/header.phtml"]["path"]; ?>
 
 <div class="mid-cont">
-    <?php require_once $dimport["comm/comm_cont.php"]["path"] ?>
+    <?php
+    require_once $dimport["post/post_cont.phtml"]["path"];
+    require_once $dimport["comm/make_comm_form.phtml"]["path"];
+    require_once $dimport["comm/comm_cont.phtml"]["path"];
+    ?>
 </div>
 
 <?php
-require_once $dimport["common/pagin.php"]["path"];
+require_once $dimport["common/pagin.phtml"]["path"];
 
 include_once $dimport["layouts/footer.phtml"]["path"];
