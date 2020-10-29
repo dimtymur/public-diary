@@ -6,11 +6,11 @@ if (postTexts)
         postText.innerText = postText.innerText.replace(regex, "\n");
     }
 
-const formSearch = document.querySelector("#form-search");
+const formSearch = document.querySelector(".form-search");
 if (formSearch)
     formSearch.addEventListener("submit", (e) => {
         e.preventDefault();
-        let headerSearch = formSearch.querySelector("#header-search");
+        let headerSearch = formSearch.querySelector(".header-search");
         addUriParam("search", headerSearch.value);
     });
 
@@ -18,40 +18,38 @@ const dropDowns = document.querySelectorAll(".dropdown-cont");
 if (dropDowns)
     for (let dropDown of dropDowns) {
         let dropDownName     = dropDown.getAttribute("name");
-        let dropDownItemIds  = POST_FILTERS[dropDownName];
-        for (let i = 0; i < dropDownItemIds.length; i++)
-            CLICKS.forEach((e) => {
-                document.getElementById(
-                    dropDownItemIds[i]
-                ).addEventListener(e, () => addUriParam(dropDownName, dropDownItemIds[i]));
-            });
+        let dropDownItems    = POST_FILTERS[dropDownName];
+        for (let i = 0; i < dropDownItems.length; i++)
+            CLICKS.forEach((e) =>
+                document.querySelector(
+                    "." + dropDownItems[i]
+                ).addEventListener(e, () => addUriParam(dropDownName, dropDownItems[i])));
     }
 
 const sortComms = document.querySelectorAll(".sort-comm");
 if (sortComms)
     for (let sortComm of sortComms) {
         let sortCommName     = sortComm.getAttribute("name");
-        let sortCommItemIds  = COMM_FILTERS[sortCommName];
-        for (let i = 0; i < sortCommItemIds.length; i++)
-            CLICKS.forEach((e) => {
-                document.getElementById(
-                    sortCommItemIds[i]
-                ).addEventListener(e, () => addUriParam(sortCommName, sortCommItemIds[i]));
-            });
+        let sortCommItems    = COMM_FILTERS[sortCommName];
+        for (let i = 0; i < sortCommItems.length; i++)
+            CLICKS.forEach((e) =>
+                document.querySelector(
+                    "." + sortCommItems[i]
+                ).addEventListener(e, () => addUriParam(sortCommName, sortCommItems[i])));
     }
 
 const posts           = document.querySelectorAll(".post");
-const postLoveForm    = document.querySelector("#post-love-form");
-const postDeleteForm  = document.querySelector("#post-delete-form");
+const postLoveForm    = document.querySelector(".post-love-form");
+const postDeleteForm  = document.querySelector(".post-delete-form");
 if (posts && postDeleteForm && postLoveForm) {
     formPostReq(postLoveForm, "post/love_post.php");
     formPostReq(postDeleteForm, "post/delete_post.php");
     for (let post of posts) {
-        let postDelBtn    = post.querySelector("#post-del-btn");
-        let postEditBtn   = post.querySelector("#post-edit-btn");
-        let postLoveBtn   = post.querySelector("#post-love-btn");
+        let postDelBtn    = post.querySelector(".post-del-btn");
+        let postEditBtn   = post.querySelector(".post-edit-btn");
+        let postLoveBtn   = post.querySelector(".post-love-btn");
         let postDate      = post.querySelector(".date");
-        let postCont      = post.querySelector("#post-cont");
+        let postCont      = post.querySelector(".post-cont");
         if (postDelBtn && postEditBtn)
             CLICKS.forEach((e) => {
                 deleteMedia(e, post, postDelBtn, postDeleteForm);
@@ -67,17 +65,17 @@ if (posts && postDeleteForm && postLoveForm) {
 }
 
 const comms           = document.querySelectorAll(".comm");
-const commLoveForm    = document.querySelector("#comm-love-form");
-const commDeleteForm  = document.querySelector("#comm-delete-form");
+const commLoveForm    = document.querySelector(".comm-love-form");
+const commDeleteForm  = document.querySelector(".comm-delete-form");
 if (comms && commDeleteForm && commLoveForm) {
     formPostReq(commLoveForm, "comm/love_comm.php");
     formPostReq(commDeleteForm, "comm/delete_comm.php");
     for (let comm of comms) {
-        let commDelBtn   = comm.querySelector("#comm-del-btn");
-        let commEditBtn  = comm.querySelector("#comm-edit-btn");
-        let commLoveBtn  = comm.querySelector("#comm-love-btn");
+        let commDelBtn   = comm.querySelector(".comm-del-btn");
+        let commEditBtn  = comm.querySelector(".comm-edit-btn");
+        let commLoveBtn  = comm.querySelector(".comm-love-btn");
         let commDate     = comm.querySelector(".date");
-        let commCont     = comm.querySelector("#comm-cont");
+        let commCont     = comm.querySelector(".comm-cont");
         if (commDelBtn && commEditBtn)
             CLICKS.forEach((e) => {
                 deleteMedia(e, comm, commDelBtn, commDeleteForm);

@@ -17,10 +17,8 @@ if (!empty($_GET["post-id"])) {
 	if ($post["user_id"] != $_SESSION["u_id"])
 		redirect($dimport["home/home_page.phtml"]["redirect"]."&error=not-your-post");
 
-	$post_title  = $post["title"];
-	$post_title  = str_replace("~_", "\n", $post_title);
-	$post_text   = $post["text"];
-	$post_text   = str_replace("~_", "\n", $post_text);
+	$post_title  = str_replace("~_", "\n", $post["title"]);
+	$post_text   = str_replace("~_", "\n", $post["text"]);
 }
 
 if (empty($post_title) || empty($post_text)) {
@@ -29,15 +27,14 @@ if (empty($post_title) || empty($post_text)) {
 	$post_text   = "";
 } else $action = $dimport['post/edit_post.php']['redirect']."&post-id=".$post['post_id']; ?>
 
-<form class="main-wrap" action="<?= $action ?>" id="post-wrap" method="POST">
+<form class="main-wrap make-post-wrap" action="<?= $action ?>" method="POST">
 	Title:
-	<input name="title" class="main-inp" id="title-inp" value="<?= $post_title ?>" pattern=".{0,100}" required>
-	<br>
+	<input class="main-inp title-inp" name="title" value="<?= $post_title ?>" pattern=".{0,100}" required>
 	<br>
 	Text:
-	<textarea cols="1" name="text" class="main-inp" id="text-inp" pattern=".{0,10000}" required><?= $post_text ?></textarea>
+	<textarea class="main-inp text-inp" cols="1" name="text" pattern=".{0,10000}" required><?= $post_text ?></textarea>
 	<?= $csrf_form_get ?>
-	<button type="submit" name="submit" class="main-btn" id="post-btn"> Post </button>
+	<button class="main-btn post-btn" name="submit" type="submit"> Post </button>
 </form>
 
 <?php include_once $dimport["layouts/footer.phtml"]["path"];

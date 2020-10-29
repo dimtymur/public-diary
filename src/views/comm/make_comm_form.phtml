@@ -15,14 +15,13 @@ if (!empty($_GET["comm-id"])) {
 	$comm_text = str_replace("~_", "\n", $comm_text);
 } ?>
 
-<form class="main-wrap"
-	  id="make-comm-form"
+<form class="main-wrap make-comm-form"
 	  <?php
 	  if ($comm_text) echo "action='".$dimport['comm/edit_comm.php']['redirect']."&comm-id=".$comm['comm_id']."'";
 	  else echo "action='".$dimport['comm/make_comm.php']['redirect']."'"; ?>
   	  method="POST">
-	<textarea cols="1" class="main-inp" id="comm-inp" type="text" name="comm" pattern=".{0,8000}" placeholder="Comment..." required><?= $comm_text ?></textarea>
+	<textarea cols="1" class="main-inp comm-inp" type="text" name="comm" pattern=".{0,8000}" placeholder="Comment..." required><?= $comm_text ?></textarea>
 	<input type="hidden" name="post-id" value="<?= $post["post_id"] ?>">
 	<?= $csrf_form_get ?>
-	<button class="main-btn" id="comm-btn" type="submit" name="submit"> Submit </button>
+	<button class="main-btn comm-btn" type="submit" name="submit"> Submit </button>
 </form>

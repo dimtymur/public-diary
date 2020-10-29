@@ -22,34 +22,34 @@
 </head>
 <body>
     <div class="page-temp">
-        <div tabindex="0" class="nav-tog" id="main-nav-tog">
+        <div tabindex="0" class="nav-tog main-nav-tog">
             <img src="/img/icons/tog-icon.png">
         </div>
         <nav class="main-nav">
-            <ul class="main-loc-nav" id="main-dir-nav">
+            <ul class="main-loc-nav main-dir-nav">
                 <a href="/index.php?page=home/home_page.phtml">
-                    <li class="main-loc-nav-item" id="main-dir-nav-item" name="home"> Home </li>
+                    <li class="main-loc-nav-item main-dir-nav-item" name="home"> Home </li>
                 </a>
                 <?php if (isset($_SESSION["u_id"])) { ?>
                     <a href="/index.php?page=profile/profile_page.phtml&user-id=<?= $_SESSION["u_id"] ?>">
-                        <li class="main-loc-nav-item" id="main-dir-nav-item" name="profile"> Profile </li>
+                        <li class="main-loc-nav-item main-dir-nav-item" name="profile"> Profile </li>
                     </a>
                     <a href="/index.php?page=post/make_post_page.phtml">
-                        <li class="main-loc-nav-item" id="main-dir-nav-item" name="post"> Post </li>
+                        <li class="main-loc-nav-item main-dir-nav-item" name="post"> Post </li>
                     </a>
                 <?php } ?>
             </ul>
-            <ul class="main-loc-nav" id="main-auth-nav">
+            <ul class="main-loc-nav main-auth-nav">
                 <?php if (isset($_SESSION["u_id"])) { ?>
                     <a href="/index.php?page=auth/logout.phtml">
-                        <li class="main-loc-nav-item" id="main-auth-nav-item" name="logout"> Logout </li>
+                        <li class="main-loc-nav-item main-auth-nav-item" name="logout"> Logout </li>
                     </a>
                 <?php } else { ?>
                     <a href="/index.php?page=auth/login_page.phtml">
-                        <li class="main-loc-nav-item" id="main-auth-nav-item" name="login"> Login </li>
+                        <li class="main-loc-nav-item main-auth-nav-item" name="login"> Login </li>
                     </a>
                     <a href="/index.php?page=auth/signin_page.phtml">
-                        <li class="main-loc-nav-item" id="main-auth-nav-item" name="signin"> Signin </li>
+                        <li class="main-loc-nav-item main-auth-nav-item" name="signin"> Signin </li>
                     </a>
                 <?php } ?>
             </ul>

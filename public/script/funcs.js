@@ -17,7 +17,7 @@ const editMedia = (evt, editBtn) =>
 
 const loveCheckMedia = (media, change=false) => {
     let loveBtn  = media.querySelector(".love-btn");
-    let likeAmt  = media.querySelector("#like-amt");
+    let likeAmt  = media.querySelector(".like-amt");
     let liked    = likeAmt.title;
     if (liked == 0) {
         if (change) {

@@ -22,31 +22,31 @@
   background-color: var(--theme-color-h);
 }
 
-#comm-cont {
+.comm-cont {
   max-height: 150px;
 }
 
-#comm-source-btn {
+.comm-source-btn {
   padding-right: 15px;
   float: right;
 }
 
-#make-comm-form {
-  border-radius: var(--border-rad);
-  padding: 5px;
-  text-align: center;
+.make-comm-form {
+    border-radius: var(--border-rad);
+    padding: 5px;
+    text-align: center;
 }
 
-#comm-inp {
-  resize: vertical;
-  width: 93%;
-  height: 20px;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  padding: 10px;
+.comm-inp {
+    resize: vertical;
+    width: 93%;
+    height: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 10px;
 }
 
-#comm-btn {
-  margin-bottom: 10px;
-  width: 98%;
+.comm-btn {
+    margin-bottom: 10px;
+    width: 98%;
 }

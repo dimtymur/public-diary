@@ -15,14 +15,14 @@ include_once $dimport["layouts/header.phtml"]["path"]; ?>
             Deleting your account will remove all your posts, comments, profile
             information and all your other activities on this website, forever.
         </p>
-        <div class="main-wrap" id="setts-sec">
+        <div class="main-wrap setts-sec">
             Password:
-            <input name="password" class="main-inp" id="setts-inp" type="password" pattern=".{7,}" required>
+            <input name="password" class="main-inp setts-inp" type="password" pattern=".{7,}" required>
             Password (Confirm):
-            <input name="password-conf" class="main-inp" id="setts-inp" type="password" pattern=".{7,}" required>
+            <input name="password-conf" class="main-inp setts-inp" type="password" pattern=".{7,}" required>
         </div>
         <?= $csrf_form_get ?>
-        <button type="submit" name="submit" class="main-btn" id="setts-btn"> Delete Account </button>
+        <button type="submit" name="submit" class="main-btn setts-btn"> Delete Account </button>
     </form>
 </div>
 
