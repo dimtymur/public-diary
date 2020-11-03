@@ -27,14 +27,14 @@ if (empty($post_title) || empty($post_text)) {
 	$post_text   = "";
 } else $action = $dimport['post/edit_post.php']['redirect']."&post-id=".$post['post_id']; ?>
 
-<form class="main-wrap make-post-wrap" action="<?= $action ?>" method="POST">
-	Title:
-	<input class="main-inp title-inp" name="title" value="<?= $post_title ?>" pattern=".{0,100}" required>
-	<br>
-	Text:
-	<textarea class="main-inp text-inp" cols="1" name="text" pattern=".{0,10000}" required><?= $post_text ?></textarea>
-	<?= $csrf_form_get ?>
-	<button class="main-btn post-btn" name="submit" type="submit"> Post </button>
+<form class="theme-box main-cont thin-cont block-middle" action="<?= $action ?>" method="POST">
+    <div class="main-title card-title"> Make a Post </div>
+    <div class="card-section">
+        <input class="main-input card-input block-middle" name="title" placeholder="title" pattern=".{0,100}" required>
+        <textarea class="main-input main-textarea card-input post-textarea block-middle" name="text" placeholder="text" pattern=".{0,10000}" required></textarea>
+    </div>
+    <?= $csrf_form_get ?>
+    <button class="main-button card-button" type="submit" name="submit"> Post </button>
 </form>
 
 <?php include_once $dimport["layouts/footer.phtml"]["path"];

@@ -1,0 +1,31 @@
+.card-box {
+    width: 350px;
+    margin-top: 30px;
+}
+
+.card-input {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: var(--font-l);
+}
+
+.card-button {
+    width: 100%;
+    margin-top: 10px;
+    font-size: var(--font-xl);
+}
+
+.card-title {
+    padding: 20px 10px 20px 10px;
+    text-align: center;
+    font-size: var(--font-xl);
+}
+
+.card-section {
+    padding: 10px 50px;
+}
+
+.card-info-text {
+    text-align: center;
+    margin: 5px;
+}

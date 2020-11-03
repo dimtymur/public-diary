@@ -1,0 +1,12 @@
+.page-temp-main {
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+}
+
+.page-item {
+    margin-bottom: 20px;
+}
+
+.sort-bar-input {
+    margin: 5px 10px;
+}

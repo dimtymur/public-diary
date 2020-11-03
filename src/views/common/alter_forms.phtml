@@ -14,16 +14,16 @@ $alter = [
       style="display: none;"
       action="<?= $alter[$alter_form]["delete"] ?>"
       method="POST">
-    <input type="text" name="media-id">
+    <input name="media-id" type="text">
     <?= $csrf_form_get ?>
-    <button type="submit" name="submit"></button>
+    <button name="submit" type="submit"></button>
 </form>
 
 <form class="<?= "$alter_form-love-form" ?>"
       style="display: none;"
       action="<?= $alter[$alter_form]["love"] ?>"
       method="POST">
-    <input type="text" name="media-id">
+    <input name="media-id" type="text">
     <?= $csrf_form_get ?>
-    <button type="submit" name="submit"></button>
+    <button name="submit" type="submit"></button>
 </form>

@@ -1,62 +1,157 @@
+body {
+    background-color: var(--back-color-d);
+    margin: 0;
+    color: var(--font-color);
+    font-family: Noto Sans;
+    font-size: var(--font-m);
+}
+
+a {
+    text-decoration: none;
+    color: var(--font-color);
+}
+
 .main-cont {
-    grid-column: 2/5;
-    font-family: serif;
-    margin-top: 10px;
+    grid-column: 2/3;
+    margin: 10px;
 }
 
-.main-wrap {
+.thin-cont {
+    width: 70%;
+}
+
+.theme-box {
     background-color: var(--back-color);
-    border: var(--theme-color) 3px solid;
-    font-family: monospace;
-    max-height: 1000px;
-    padding: 20px;
-    margin-bottom: 10px;
-    border-radius: var(--border-rad);
-    color: white;
-    font-size: var(--desc-size);
+    border-top: 1px var(--back-color-l) solid;
 }
 
-.main-inp {
-    background-color: var(--back-color);
-    color: white;
-    width: 90%;
-    height: 40px;
-    font-size: var(--desc-size);
-    letter-spacing: var(--let-space-s);
-    padding-left: 10px;
-    margin-top: 10px;
-    margin-bottom: 25px;
-    border-radius: var(--border-rad);
-    border: 3px white dotted;
-}
-.main-inp:focus {
-    border: 3px white solid;
+.float-right {
+    float: right;
 }
 
-.main-btn {
-    width: 100%;
-    height: 40px;
-    font-size: var(--title-size);
-    margin-top: 10px;
-    letter-spacing: var(--let-space);
-    background-color: var(--back-color);
-    color: white;
-    border-radius: 8px;
-    border-top: 1px white solid;
-    border-right: 2px white solid;
-    border-left: 2px white solid;
-    border-bottom: 3px white solid;
-    cursor: pointer;
-}
-.main-btn:focus {
-    border-top: 0;
-    border-right: 1px white solid;
-    border-left: 1px white solid;
-    border-bottom: 1px white solid;
+.block-right {
+    display: block;
+    margin-left: auto;
 }
 
-.mid-cont {
-    width: 60%;
+.position-right {
+    right: 0;
+}
+
+.block-middle {
+    display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.invert-icon {
+    filter: var(--icon-invert);
+}
+
+.main-title {
+    font-weight: bold;
+}
+
+.main-input {
+    background-color: var(--back-color-d);
+    color: var(--font-color);
+    border: none;
+    border: 1px solid var(--back-color-l);
+    padding-left: 5px;
+    font-size: var(--font-m);
+}
+
+.main-textarea {
+    height: 25px;
+    padding-top: 5px;
+    resize: vertical;
+}
+
+.main-button {
+    background-color: var(--theme-color);
+    padding: 3px;
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: var(--font-m);
+    color: var(--font-color);
+    border: none;
+    cursor: pointer;
+}
+
+.main-info-text {
+    display: inline-block;
+    padding-right: 5px;
+}
+.main-info-text:not(:last-child) {
+    border-right-width: 6px;
+    border-right-style: dotted;
+}
+
+.main-nav {
+    z-index: 2;
+    position: fixed;
+    width: 60px;
+    height: 100%;
+    background-color: var(--theme-color);
+    overflow: hidden;
+    transition: 0.3s ease-in-out;
+}
+.main-nav:hover, .main-nav-btn:focus + .main-nav {
+    width: 260px;
+}
+
+.main-nav-bottom {
+    position: absolute;
+    bottom: 0;
+}
+
+.main-nav-item {
+    list-style: none;
+    margin: 10px;
+    padding: 20px 0px 20px 60px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 40px;
+    font-size: var(--font-l);
+    transition: 0.1s ease-in-out;
+}
+.main-nav-item:hover {
+    background-size: 45px;
+    font-size: var(--font-xl);
+}
+
+.main-nav-btn {
+    z-index: 1;
+    position: fixed;
+    display: none;
+    background-color: var(--back-color-d);
+    border: 1px var(--back-color-l) solid;
+    border-radius: 5px;
+    padding: 10px;
+    opacity: .6;
+    cursor: pointer;
+    font-size: var(--font-xl);
+}
+.main-nav-btn:hover {
+    opacity: 1;
+}
+
+.main-nav-home {
+    background-image: url("/img/icons/home-icon.png");
+}
+.main-nav-profile {
+    background-image: url("/img/icons/profile-icon.png");
+}
+.main-nav-post {
+    background-image: url("/img/icons/post-icon.png");
+}
+
+.main-nav-login {
+    background-image: url("/img/icons/login-icon.png");
+}
+.main-nav-logout {
+    background-image: url("/img/icons/logout-icon.png");
+}
+.main-nav-signup {
+    background-image: url("/img/icons/signup-icon.png");
 }

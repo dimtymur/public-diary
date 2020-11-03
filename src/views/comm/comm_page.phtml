@@ -23,8 +23,13 @@ $comms = $sql_query($query_comm);
 $title = $user["username"]."'s Comments";
 include_once $dimport["layouts/header.phtml"]["path"]; ?>
 
-<div class="mid-cont">
-    <?php require_once $dimport["comm/comm_cont.phtml"]["path"] ?>
+<div class="main-cont thin-cont block-middle">
+    <?php
+    if (!empty($comms)) {
+        require_once $dimport["comm/comm_sort_bar.phtml"]["path"];
+        require_once $dimport["comm/comm_cont.phtml"]["path"];
+    }
+    ?>
 </div>
 
 <?php

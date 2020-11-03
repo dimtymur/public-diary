@@ -6,34 +6,61 @@ require_once $dimport["security/csrf_prev.php"]["path"];
 $title = "Settings";
 include_once $dimport["layouts/header.phtml"]["path"]; ?>
 
-<div class="mid-cont">
-	<div class="main-wrap">
-		<form action="<?= $dimport["user/edit_user.php"]["redirect"] ?>"
-	          method="POST">
-			<h1 class="setts-title"> Information </h1>
-			<div class="main-wrap setts-sec">
-				Username:
-				<input name="username" class="main-inp setts-inp" pattern="[a-zA-Z0-9_-]{3,20}" value="<?= $_SESSION["u_name"] ?>">
-				Email:
-				<input name="email" class="main-inp setts-inp" type="email" value="<?= $_SESSION["u_email"] ?>">
-			</div>
-			<h1 class="setts-title"> Password </h1>
-			<div class="main-wrap setts-sec">
-				New Password:
-				<input name="password-new" class="main-inp setts-inp" type="password" pattern=".{7,}">
-				New Password (Confirm):
-				<input name="password-conf" class="main-inp setts-inp" type="password" pattern=".{7,}">
-				Current Password:
-				<input name="password-curr" class="main-inp setts-inp" type="password" pattern=".{7,}">
-			</div>
-			<?= $csrf_form_get ?>
-	    	<button type="submit" name="submit" class="main-btn setts-btn"> Update </button>
-		</form>
-		<br>
-		<a href="<?= $dimport["setts/del_page.phtml"]["redirect"] ?>">
-			<button class="main-btn setts-btn"> Delete Account </button>
-		</a>
-	</div>
+<div class="main-cont thin-cont block-middle">
+	<form class="theme-box settings-cont"
+		  action="<?= $dimport["user/edit_user.php"]["redirect"] ?>"
+		  method="POST">
+	    <div class="main-title settings-text settings-section-title"> User Information </div>
+	    <div class="settings-section settings-menu-section settings-piece">
+	        <div class="settings-menu-item">
+	            <div class="main-title"> Username </div>
+	            <input class="main-input settings-input" name="username" pattern="[a-zA-Z0-9_-]{3,20}" value="<?= $_SESSION["u_name"] ?>">
+	        </div>
+	        <div class="settings-menu-item">
+	            <div class="main-title"> Email </div>
+	            <input class="main-input settings-input" type="email" name="email" value="<?= $_SESSION["u_email"] ?>">
+	        </div>
+	    </div>
+	    <div class="main-title settings-text settings-section-title"> Password </div>
+	    <div class="settings-section settings-menu-section settings-piece">
+	        <div class="settings-menu-item">
+	            <div class="main-title"> Current Password </div>
+	            <input class="main-input settings-input" name="password-curr" type="password" pattern=".{7,}">
+	        </div>
+	        <div class="settings-menu-item">
+	            <div class="main-title"> New Password </div>
+	            <input class="main-input settings-input" name="password-new" type="password" pattern=".{7,}">
+	        </div>
+	        <div class="settings-menu-item">
+	            <div class="main-title"> New Password (Repeat) </div>
+	            <input class="main-input settings-input" name="password-conf" type="password" pattern=".{7,}">
+	        </div>
+	    </div>
+		<?= $csrf_form_get ?>
+	    <button class="main-button block-right" type="submit" name="submit"> Save Changes </button>
+	</form>
+
+	<form class="theme-box settings-cont"
+		  action="<?= $dimport["user/delete_user_req.php"]["redirect"] ?>"
+		  method="POST">
+	    <div class="main-title settings-text settings-section-title"> Delete Account </div>
+	    <div class="settings-text">
+			Deleting your account will remove all your posts, comments, profile
+            information and all your other activities on this website, forever.
+	    </div>
+		<div class="settings-section settings-menu-section settings-piece">
+	        <div class="settings-menu-item">
+	            <div class="main-title"> Password </div>
+	            <input class="main-input settings-input" name="password" type="password" pattern=".{7,}">
+	        </div>
+	        <div class="settings-menu-item">
+	            <div class="main-title"> Password (Repeat) </div>
+	            <input class="main-input settings-input" name="password-conf" type="password" pattern=".{7,}">
+	        </div>
+	    </div>
+		<?= $csrf_form_get ?>
+	    <button class="main-button block-right" type="submit" name="button"> Delete Account </button>
+	</form>
 </div>
 
 <?php include_once $dimport["layouts/footer.phtml"]["path"];
