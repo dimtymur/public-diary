@@ -1,0 +1,36 @@
+.settings-cont {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.settings-piece {
+    background-color: var(--back-color-d);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.settings-section-title {
+    font-size: var(--font-xl);
+    text-align: center;
+}
+
+.settings-text {
+    padding: 0 0 20px 0;
+}
+
+.settings-section {
+    margin-bottom: 40px;
+}
+
+.settings-menu-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+}
+
+.settings-menu-item {
+    margin: 10px;
+}
+
+.settings-input {
+    margin-top: 10px;
+}

@@ -23,10 +23,11 @@ $comms = $sql_query($query_comm);
 $title = $post["title"];
 include_once $dimport["layouts/header.phtml"]["path"]; ?>
 
-<div class="mid-cont">
+<div class="main-cont thin-cont block-middle">
     <?php
     require_once $dimport["post/post_cont.phtml"]["path"];
     require_once $dimport["comm/make_comm_form.phtml"]["path"];
+    if (!empty($comms)) require_once $dimport["comm/comm_sort_bar.phtml"]["path"];
     require_once $dimport["comm/comm_cont.phtml"]["path"];
     ?>
 </div>

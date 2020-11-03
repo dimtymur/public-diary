@@ -1,12 +1,4 @@
-<?php if (!empty($comms)) { ?>
-    <div class="sort-comm-cont">
-        <ul class="sort-comm" name="sort">
-            <li class="sort-comm-item new-comm"> Newest </li>
-            <li class="sort-comm-item love-comm"> Love </li>
-        </ul>
-    </div>
-<?php }
-
+<?php
 $query_like   = "SELECT count(*) AS like_amt
                  FROM mpd_comm_like
                  WHERE comm_id = ?;";
@@ -20,36 +12,45 @@ foreach ($comms as $comm) {
     $user      = $records_get("mpd_user", "user_id", $comm["user_id"])[0];
     $like_amt  = $sql_query($query_like, [$comm["comm_id"]])[0]["like_amt"];
     $liked     = $sql_query($query_liked, [$comm["comm_id"], $_SESSION["u_id"]])[0]["like_amt"]; ?>
-    <div class='media comm' id='<?= $comm["comm_id"] ?>'>
-        <div class='media-bar media-bar-top'>
-            <a href='index.php?page=profile/profile_page.phtml&user-id=<?= $user["user_id"] ?>'>
-                <img src='/img/icons/profile-icon.png' class='media-bar-item post-profile'>
-                <strong class='post-username'> <?= $user["username"] ?> </strong>
+    <div class="theme-box page-item media post" id='<?= $comm["comm_id"] ?>'>
+        <div class="media-bar">
+            <a class="media-bar-item" href='index.php?page=profile/profile_page.phtml&user-id=<?= $user["user_id"] ?>'> <?= $user["username"] ?> </a>
+            <div class="media-bar-item main-date media-date"> <?= $comm["comm_dt"] ?> </div>
+            <div class="float-right">
+                <div class="dropdown" tabindex="0">
+                    <div class="dropdown-btn">• • •</div>
+                    <ul class="dropdown-cont position-right">
+                        <?php if ($_SESSION["u_id"] == $post["user_id"]) { ?>
+                            <li class="dropdown-item comm-del-btn"> Delete </li>
+                            <li class="dropdown-item comm-edit-btn"
+                                href='<?= $post_page."&post-id=".$comm["post_id"]."&comm-id=".$comm["comm_id"] ?>'> Edit </li>
+                        <?php } else { ?>
+                            <li class="dropdown-item"> Report </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="media-cont comment-cont">
+            <div class="media-text"> <?= $comm["comm"] ?> </div>
+        </div>
+        <div class="see-more"> See More </div>
+        <div class="media-bar">
+            <div class="media-bar-item media-bar-like">
+                <img class="invert-icon media-bar-icon check{state:<?= $liked ?>}" src="/img/icons/heart-icon.png">
+                <div class="media-bar-icon-value"> <?= $like_amt ?> </div>
+            </div>
+            <a class="media-bar-item" href="<?= $post_page."&post-id=".$post["post_id"] ?>">
+                <img class="invert-icon media-bar-icon" src="/img/icons/comm-icon.png">
+                <div class="media-bar-icon-value"> <?= $comm_amt ?> </div>
             </a>
-            <img tabindex='0' src='/img/icons/more-icon.png' class='media-bar-item media-more'>
-            <ul class='more-tog-menu'>
-                <?php if ($_SESSION["u_id"] == $comm["user_id"]) { ?>
-                    <li class='more-tog-menu-item comm-del-btn'> Delete </li>
-                    <li class='more-tog-menu-item comm-edit-btn'
-                        href='<?= $post_page."&post-id=".$comm["post_id"]."&comm-id=".$comm["comm_id"] ?>'> Edit </li>
-                <?php } else { ?>
-                    <li class='more-tog-menu-item comm-report-btn'> Report </li>
+            <div class="media-bar-item float-right">
+                <?php if (empty($post)) { ?>
+                    <a href="<?= $post_page."&post-id=".$comm["post_id"] ?>">
+                        <img class='invert-icon media-bar-icon' src='/img/icons/source-icon.png'>
+                    </a>
                 <?php } ?>
-            </ul>
-        </div>
-        <div class='media-cont comm-cont'>
-            <p class='text'> <?= $comm["comm"] ?> </p>
-            <p class='text date media-date'> <?= $comm["comm_dt"] ?> </p>
-        </div>
-        <div class="see-more"> <p class="see-more-text"> See More </p> </div>
-        <div class='media-bar media-bar-bottom'>
-            <img src='/img/icons/heart-icon.png' class='media-bar-item love-btn comm-love-btn'>
-            <em class='like-amt' title='<?= $liked ?>'> <?= $like_amt ?> </em>
-            <?php if (empty($post)) { ?>
-                <a href="<?= $post_page."&post-id=".$comm["post_id"] ?>">
-                    <img src='/img/icons/source-icon.png' class='media-bar-item comm-source-btn'>
-                </a>
-            <?php } ?>
+            </div>
         </div>
     </div>
 <?php }

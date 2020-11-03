@@ -95,7 +95,7 @@ const formatDate = (date) => {
 
 const addPagin = (evt, paginElem) => {
     let step = parseInt(getUriParam("step"));
-    if (paginElem.id == "pagin-next") {
+    if (paginElem.className.indexOf("pagin-next") != -1) {
         if (!step || step < 0) step = 0;
         paginElem.addEventListener(evt, () => addUriParam("step", ++step));
     } else {
@@ -105,19 +105,13 @@ const addPagin = (evt, paginElem) => {
 }
 
 const seeMore = (evt, cont) => {
-    let contText        = cont.querySelector(".text");
+    let contText        = cont.querySelector(".media-text");
     let contHeight      = parseInt(getComputedStyle(cont)["height"]);
     let contTextHeight  = parseInt(getComputedStyle(contText)["height"]);
-    if (contHeight < contTextHeight) {
-        let mainWrap = cont.parentElement;
-        let seeMore = mainWrap.querySelector(".see-more");
-        seeMore.style.display = "block";
-        seeMore.addEventListener(evt, () => {
-            if (postWrap) window.location.href = "/index.php?page=post/post_page.phtml&post-id=" + mainWrap.id;
-            else {
-                seeMore.style.display = "none";
-                cont.style.maxHeight = "10000px";
-            }
-        });
-    }
+    let seeMore = cont.parentElement.querySelector(".see-more");
+    if (contHeight < contTextHeight) seeMore.style.display = "block";
+    seeMore.addEventListener(evt, () => {
+        seeMore.style.display = "none";
+        cont.style.maxHeight = "10000px";
+    });
 }

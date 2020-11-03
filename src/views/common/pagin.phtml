@@ -9,8 +9,8 @@ $next = $sql_query($query_next, [$search_val, $search_val]); ?>
 
 <div class="pagin-cont">
     <?php if ($pagin_page != 0) { ?>
-        <img src="/img/icons/arrow-icon.png" class="pagin-arrow pagin-prev">
-    <?php } if (count($next) == 1) { ?>
-        <img src="/img/icons/arrow-icon.png" class="pagin-arrow pagin-next">
+        <img class="pagin-arrow pagin-prev" src="/img/icons/arrow-icon.png">
+    <?php } if (count($next) > 0) { ?>
+        <img class="pagin-arrow pagin-next" src="/img/icons/arrow-icon.png">
     <?php } ?>
 </div>

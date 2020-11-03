@@ -9,27 +9,17 @@ if ($email_ver_get($user["user_id"]))
 $title = "Reset Password";
 include_once $dimport["layouts/header.phtml"]["path"]; ?>
 
-<div class="mid-cont">
-    <form class="main-wrap"
-          action="<?= $dimport["user/reset_pwd_req.php"]["redirect"] ?>"
-          method="POST">
-        <h1 class="setts-title"> Information </h1>
-        <p class="setts-desc"> Enter your account's email for the verification code to be sent to. </p>
-        <div class="main-wrap setts-sec">
-            Email:
-            <input name="email" class="main-inp setts-inp" type="email" value="<?= $_SESSION["u_email"] ?>" required>
-        </div>
-        <h1 class="setts-title"> Password </h1>
-        <p class="setts-desc"> Enter your new password. </p>
-        <div class="main-wrap setts-sec">
-            New Password:
-            <input name="password-new" class="main-inp setts-inp" type="password" required>
-            New Password (Confirm):
-            <input name="password-conf" class="main-inp setts-inp" type="password" required>
-        </div>
-        <?= $csrf_form_get ?>
-        <button type="submit" name="submit" class="main-btn setts-btn"> Update </button>
-    </form>
-</div>
+<form class="theme-box card-box block-middle"
+      action="<?= $dimport['user/reset_pwd_req.php']['redirect'] ?>"
+      method="POST">
+    <div class="main-title card-title"> Password Reset </div>
+    <div class="card-section">
+        <input class="main-input card-input block-middle" name="email" type="email" placeholder="email" required>
+        <input class="main-input card-input block-middle" name="password-new" type="password" placeholder="new password" pattern=".{7,}" required>
+        <input class="main-input card-input block-middle" name="password-conf" type="password" placeholder="new password (repeat)" pattern=".{7,}" required>
+    </div>
+    <?= $csrf_form_get ?>
+    <button class="main-button card-button" type="submit" name="submit"> Update </button>
+</form>
 
 <?php include_once $dimport["layouts/footer.phtml"]["path"];

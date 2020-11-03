@@ -1,0 +1,13 @@
+.error-page {
+    padding: 10px;
+    text-align: center;
+}
+
+.error-title {
+    font-size: var(--font-xl);
+}
+
+.error-img {
+    width: 400px;
+    border: var(--font-color) 2px solid;
+}

@@ -15,29 +15,28 @@ $like_amt = $post_like_amt + $comm_like_amt;
 
 $comm_page   = $dimport["comm/comm_page.phtml"]["redirect"];
 $setts_page  = $dimport["setts/setts_page.phtml"]["redirect"]; ?>
-<div class='media post'>
-    <div class='profile-info'>
-        <div class='profile-item'> <img class='profile-icon' src='/img/icons/profile-icon.png'> </div>
-        <div class='profile-item'> <h3 class='profile-desc'> <?= $user['username'] ?> </h3> </div>
-        <div class='profile-item'>
-            <h3 class='profile-title'>
-                <img class='media-bar-item profile-item-icon' src='/img/icons/heart-icon.png'>
-                <?= $like_amt; ?>
-            </h3>
-            <h3 class='profile-title'>
-                <img class='media-bar-item profile-item-icon' src='/img/icons/cake-icon.png'>
-                <strong class="date"> <?= $user['user_dt'] ?> </strong>
-            </h3>
+<div class="theme-box page-item media post">
+    <div class="main-title profile-menu-title"> <?= $user['username'] ?> </div>
+    <div class="profile-section">
+        <div class="profile-menu-desc">
+            <img class="profile-menu-desc-icon invert-icon" src="/img/icons/cake-icon.png" alt="">
+            <b class="profile-menu-desc-key"> Registered </b>
+            <div class="profile-menu-desc-value main-date float-right"> <?= $user['user_dt'] ?> </div>
         </div>
-        <div class='profile-item'>
-            <?php if ($user["user_id"] == $_SESSION["u_id"]) { ?>
-                <a href="<?= $setts_page ?>">
-                    <button class='main-btn setts-btn'> Settings </button>
-                </a>
-            <?php } ?>
-            <a href="<?= $comm_page."&user-id=".$user['user_id'] ?>">
-                <button class='main-btn comments-btn'> Comments </button>
+        <div class="profile-menu-desc">
+            <img class="profile-menu-desc-icon invert-icon" src="/img/icons/heart-checked-icon.png" alt="">
+            <b class="profile-menu-desc-key"> Likes </b>
+            <div class="profile-menu-desc-value float-right"> <?= $like_amt; ?> </div>
+        </div>
+    </div>
+    <div class="profile-menu-nav">
+        <?php if ($user["user_id"] == $_SESSION["u_id"]) { ?>
+            <a href="<?= $setts_page ?>">
+                <button class='main-button card-button'> Settings </button>
             </a>
-        </div>
+        <?php } ?>
+        <a href="<?= $comm_page."&user-id=".$user['user_id'] ?>">
+            <button class='main-button card-button'> Comments </button>
+        </a>
     </div>
 </div>

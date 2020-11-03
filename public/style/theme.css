@@ -1,25 +1,13 @@
 :root {
-    --back-color: hsl(0, 0%, 8%);
-    --theme-color: hsl(0, 47%, 40%);
-    --theme-color-h: hsl(0, 47%, 35%);
-    --post-color: hsl(30, 14%, 85%);
-    --title-size-g: 35px;
-    --title-size: 20px;
-    --title-size-s: 18px;
-    --desc-size: 16px;
-    --desc-size-s: 14px;
-    --let-space: 7px;
-    --let-space-s: 2px;
-    --border-rad: 12px;
-}
-
-body {
-    background-color: var(--back-color);
-    font-family: cursive;
-    color: black;
-}
-
-a {
-    color: black;
-    text-decoration: none;
+    --back-color-l: hsl(0, 0%, 16%);
+    --back-color: hsl(0, 0%, 12%);
+    --back-color-d: hsl(0, 0%, 8%);
+    --theme-color: hsl(170, 60%, 35%);
+    --theme-color-d: hsl(170, 60%, 20%);
+    --font-m: 16px;
+    --font-l: 17px;
+    --font-xl: 20px;
+    --font-color-l: hsl(0, 0%, 50%);
+    --font-color: hsl(0, 0%, 80%);
+    --icon-invert: invert(100%);
 }
