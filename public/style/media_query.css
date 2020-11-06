@@ -1,5 +1,5 @@
 @media screen and (max-width: 70rem) {
-    .post-col--3 {
+    .main-cont-col--3 {
         display: none;
     }
 
@@ -13,7 +13,7 @@
 }
 
 @media screen and (max-width: 50rem) {
-    .post-col--2 {
+    .main-cont-col--2 {
         display: none;
     }
 

@@ -1,23 +1,23 @@
 <div class="theme-box page-item">
-    <div class="dropdown" tabindex="0">
+    <div class="dropdown dropdown-filter" tabindex="0">
         <div class="dropdown-btn"> Sort &nbsp▾ </div>
         <ul class="dropdown-cont">
-            <li class="dropdown-item new-post"> New </li>
-            <li class="dropdown-item love-post"> Likes </li>
-            <li class="dropdown-item comments"> Comments </li>
+            <li class="dropdown-item filter{sort:new}"> New </li>
+            <li class="dropdown-item filter{sort:like}"> Likes </li>
+            <li class="dropdown-item filter{sort:comment}"> Comments </li>
         </ul>
     </div>
-    <div class="dropdown" tabindex="0">
+    <div class="dropdown dropdown-filter" tabindex="0">
         <div class="dropdown-btn"> Date &nbsp▾ </div>
         <ul class="dropdown-cont">
-            <li class="dropdown-item today-post"> Today </li>
-            <li class="dropdown-item week-post"> Week </li>
-            <li class="dropdown-item month-post"> Month </li>
-            <li class="dropdown-item year-post"> Year </li>
-            <li class="dropdown-item all-post"> All </li>
+            <li class="dropdown-item filter{date:today}"> Today </li>
+            <li class="dropdown-item filter{date:week}"> Week </li>
+            <li class="dropdown-item filter{date:month}"> Month </li>
+            <li class="dropdown-item filter{date:year}"> Year </li>
+            <li class="dropdown-item filter{date:all}"> All </li>
         </ul>
     </div>
-    <form class='float-right' method='GET'>
+    <form class='form-search float-right' method='GET'>
         <input class='main-input sort-bar-input' name='search' placeholder='search...' required>
     </form>
 </div>

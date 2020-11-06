@@ -13,7 +13,7 @@
 }
 
 .media-text {
-    padding: 10px;
+    padding: 0 10px 20px 10px;
 }
 
 .media-section {
@@ -35,19 +35,15 @@
     margin-bottom: 5px;
 }
 
-.media-date {
+.media-bar-info {
     padding: 5px 10px;
     color: var(--font-color-l);
 }
 
 .media-bar {
-    background-color: var(--back-color);
+    background-color: var(--back-color-d);
     display: inline-block;
     width: 100%;
-}
-
-.media-info-text-cont {
-    color: var(--font-color-l);
 }
 
 .see-more {

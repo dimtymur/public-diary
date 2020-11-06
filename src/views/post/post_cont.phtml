@@ -17,10 +17,10 @@ foreach ($posts as $post) {
     $like_amt  = $sql_query($query_like, [$post["post_id"]])[0]["like_amt"];
     $comm_amt  = $sql_query($query_comm, [$post["post_id"]])[0]["comm_amt"];
     $liked     = $sql_query($query_liked, [$post["post_id"], $_SESSION["u_id"]])[0]["like_amt"]; ?>
-    <div class="theme-box page-item media post" id='<?= $post["post_id"] ?>'>
+    <div class="main-cont-item theme-box page-item media post" id='<?= $post["post_id"] ?>'>
         <div class="media-bar">
             <a class="media-bar-item" href='index.php?page=profile/profile_page.phtml&user-id=<?= $user["user_id"] ?>'> <?= $user["username"] ?> </a>
-            <div class="media-bar-item main-date media-date"> <?= $post["post_dt"] ?> </div>
+            <div class="media-bar-item media-bar-info main-date date"> <?= $post["post_dt"] ?> </div>
             <div class="float-right">
                 <div class="dropdown" tabindex="0">
                     <div class="dropdown-btn">• • •</div>
@@ -35,15 +35,15 @@ foreach ($posts as $post) {
                 </div>
             </div>
         </div>
-        <div class="media-cont post-cont">
-            <div class="main-title media-text post-title"> <?= $post["title"] ?> </div>
-            <div class="media-text"> <?= $post["text"] ?> </div>
+        <div class="main-title post-title"> <?= $post["title"] ?> </div>
+        <div class="media-cont">
+            <div class="media-text see-more-text"> <?= $post["text"] ?> </div>
         </div>
         <div class="see-more"> See More </div>
         <div class="media-bar">
-            <div class="media-bar-item media-bar-like">
-                <img class="invert-icon media-bar-icon check{state:<?= $liked ?>}" src="/img/icons/heart-icon.png">
-                <div class="media-bar-icon-value"> <?= $like_amt ?> </div>
+            <div class="media-bar-item like-btn">
+                <img class="invert-icon media-bar-icon like-icon check{state:<?= $liked ?>}" src="/img/icons/heart-icon.png">
+                <div class="media-bar-icon-value like-amt"> <?= $like_amt ?> </div>
             </div>
             <a class="media-bar-item" href="<?= $post_page."&post-id=".$post["post_id"] ?>">
                 <img class="invert-icon media-bar-icon" src="/img/icons/comm-icon.png">

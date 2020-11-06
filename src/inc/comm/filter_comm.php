@@ -11,7 +11,7 @@ if (!empty($post)) $filters[] = "mpd_comm.post_id = ".$post['post_id'];
 
 $order_by  = "comm_dt";
 $table     = "mpd_comm";
-if (!empty($_GET["sort"]) && $_GET["sort"] == "love-comm") {
+if (!empty($_GET["sort"]) && $_GET["sort"] == "like") {
     $order_by  = "like_amt";
     $table     = "(SELECT mpd_comm.*, COUNT(mpd_comm_like.comm_id) AS like_amt
                   FROM mpd_comm JOIN mpd_comm_like

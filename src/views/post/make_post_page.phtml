@@ -30,8 +30,8 @@ if (empty($post_title) || empty($post_text)) {
 <form class="theme-box main-cont thin-cont block-middle" action="<?= $action ?>" method="POST">
     <div class="main-title card-title"> Make a Post </div>
     <div class="card-section">
-        <input class="main-input card-input block-middle" name="title" placeholder="title" pattern=".{0,100}" required>
-        <textarea class="main-input main-textarea card-input post-textarea block-middle" name="text" placeholder="text" pattern=".{0,10000}" required></textarea>
+        <input class="main-input card-input block-middle" name="title" value="<?= $post_title ?>" placeholder="title" pattern=".{0,100}" required>
+        <textarea class="main-input main-textarea card-input post-textarea block-middle" name="text" placeholder="text" pattern=".{0,10000}" required><?= $post_text ?></textarea>
     </div>
     <?= $csrf_form_get ?>
     <button class="main-button card-button" type="submit" name="submit"> Post </button>

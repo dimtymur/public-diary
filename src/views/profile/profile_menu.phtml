@@ -15,13 +15,13 @@ $like_amt = $post_like_amt + $comm_like_amt;
 
 $comm_page   = $dimport["comm/comm_page.phtml"]["redirect"];
 $setts_page  = $dimport["setts/setts_page.phtml"]["redirect"]; ?>
-<div class="theme-box page-item media post">
+<div class="theme-box page-item main-cont-item">
     <div class="main-title profile-menu-title"> <?= $user['username'] ?> </div>
     <div class="profile-section">
         <div class="profile-menu-desc">
             <img class="profile-menu-desc-icon invert-icon" src="/img/icons/cake-icon.png" alt="">
             <b class="profile-menu-desc-key"> Registered </b>
-            <div class="profile-menu-desc-value main-date float-right"> <?= $user['user_dt'] ?> </div>
+            <div class="profile-menu-desc-value date float-right"> <?= $user['user_dt'] ?> </div>
         </div>
         <div class="profile-menu-desc">
             <img class="profile-menu-desc-icon invert-icon" src="/img/icons/heart-checked-icon.png" alt="">

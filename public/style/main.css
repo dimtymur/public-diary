@@ -22,7 +22,7 @@ a {
 
 .theme-box {
     background-color: var(--back-color);
-    border-top: 1px var(--back-color-l) solid;
+    border: 1px var(--back-color-l) solid;
 }
 
 .float-right {
@@ -65,6 +65,7 @@ a {
     height: 25px;
     padding-top: 5px;
     resize: vertical;
+    font-family: Noto Sans;
 }
 
 .main-button {

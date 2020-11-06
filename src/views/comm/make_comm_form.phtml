@@ -12,14 +12,15 @@ if (!empty($_GET["comm-id"])) {
 		redirect($dimport["home/home_page.phtml"]["redirect"]."&error=invalid-comm");
 
 	$comm_text = str_replace("~_", "\n", $comm["comm"]);
-} ?>
+}
 
-<form class="theme-box comment-cont"
-	  <?php
-	  if ($comm_text) echo "action='".$dimport['comm/edit_comm.php']['redirect']."&comm-id=".$comm['comm_id']."'";
-	  else echo "action='".$dimport['comm/make_comm.php']['redirect']."'"; ?>
-	  method="POST">
-    <textarea class="main-input main-textarea comment-textarea block-middle" name="comm" cols="1" placeholder="add a comment..." pattern=".{0,8000}" required><?= $comm_text ?></textarea>
+if (empty($comm_text)) {
+	$action     = $dimport['comm/make_comm.php']['redirect'];
+	$comm_text  = "";
+} else $action = $dimport['comm/edit_comm.php']['redirect']."&comm-id=".$comm['comm_id']; ?>
+
+<form class="theme-box make-comment-cont" action="<?= $action ?>" method="POST">
+    <textarea class="main-input main-textarea comment-textarea block-middle" name="comm" placeholder="add a comment..." pattern=".{0,8000}" required><?= $comm_text ?></textarea>
 	<input type="hidden" name="post-id" value="<?= $post["post_id"] ?>">
 	<?= $csrf_form_get ?>
 	<button class="main-button media-button block-right" type="submit" name="submit"> Comment </button>

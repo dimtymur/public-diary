@@ -39,7 +39,7 @@ if (empty($_POST["comm"]))
     redirect($dimport["post/post_page.phtml"]["redirect"]."$post_id_uri&error=invalid-input");
 
 $comm_text = xss_prev(trim($_POST["comm"]));
-$comm_text = str_replace("~_", "\n", $comm_text);
+$comm_text = str_replace("\n", "~_", $comm_text);
 
 if (!(strlen($comm_text) < 8000))
     redirect($dimport["post/post_page.phtml"]["redirect"]."$post_id_uri&error=invalid-input");

@@ -1,6 +1,6 @@
 <?php require_once $dimport["db/db_funcs.php"]["path"];
 
-$time = "5M";
+$time = "3M";
 $last_post_ts_query = "SELECT * FROM mpd_post
                        WHERE user_id = ?
                        ORDER BY post_ts DESC

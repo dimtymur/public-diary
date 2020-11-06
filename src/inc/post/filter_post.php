@@ -17,10 +17,10 @@ if (!empty($_GET["search"])) {
 
 if (!empty($_GET["date"])) {
     $dates = [
-        "today-post"  => 1,
-        "week-post"   => 7,
-        "month-post"  => 30,
-        "year-post"   => 365
+        "today"  => 1,
+        "week"   => 7,
+        "month"  => 30,
+        "year"   => 365
     ];
     if (isset($dates[$_GET["date"]]))
         $filters[] = "post_dt >= (CURDATE() - INTERVAL ".$dates[$_GET["date"]]." DAY)";
@@ -32,13 +32,13 @@ if (!empty($filters)) $filter_query = "WHERE ".implode(" AND ", $filters);
 $order_by  = "post_dt";
 $table     = "mpd_post";
 if (!empty($_GET["sort"])) {
-    if ($_GET["sort"] == "love-post") {
+    if ($_GET["sort"] == "like") {
         $order_by  = "like_amt";
         $table     = "(SELECT mpd_post.*, COUNT(mpd_post_like.post_id) AS like_amt
                       FROM mpd_post JOIN mpd_post_like
                       ON mpd_post_like.post_id = mpd_post.post_id
                       GROUP BY mpd_post_like.post_id) AS mpd_post";
-    } else if ($_GET["sort"] == "comments") {
+    } else if ($_GET["sort"] == "comment") {
         $order_by  = "comm_amt";
         $table     = "(SELECT mpd_post.*, COUNT(mpd_comm.post_id) AS comm_amt
                       FROM mpd_post JOIN mpd_comm

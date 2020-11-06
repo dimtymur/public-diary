@@ -1,44 +1,25 @@
-const deleteMediaConsent = (mediaForm, mediaId) => {
-    let delConsent = confirm("Do you really want to delete it?");
-    if (delConsent) {
-        mediaForm.querySelector("input[name='media-id']").value = mediaId;
-        mediaForm.querySelector("button[name='submit']").click();
-        return true;
-    } return false;
+const mediaFormAction = (media, mediaForm) => {
+    mediaForm.querySelector("input[name='media-id']").value = media.id;
+    mediaForm.querySelector("button[name='submit']").click();
 };
-const deleteMedia = (evt, media, delBtn, delForm) =>
-    delBtn.addEventListener(evt, () => {
-        if (deleteMediaConsent(delForm, media["id"])) media.style.display = "none";
-    });
 
-const editMedia = (evt, editBtn) =>
-    editBtn.addEventListener(evt, () =>
-        window.location.href = editBtn.getAttribute("href"));
+const deleteAction = (media, deleteForm) => {
+    if (!confirm("Do you really want to delete it?")) return;
+    media.style.display = "none";
+    mediaFormAction(media, deleteForm);
+};
 
-const loveCheckMedia = (media, change=false) => {
-    let loveBtn  = media.querySelector(".love-btn");
-    let likeAmt  = media.querySelector(".like-amt");
-    let liked    = likeAmt.title;
-    if (liked == 0) {
-        if (change) {
-            likeAmt.innerText = parseInt(likeAmt.innerText) + 1;
-            likeAmt.title = 1;
-            loveBtn.src = LOVE_IMG["loved"];
-        } else loveBtn.src = LOVE_IMG["unloved"];
+const likeAction = (media, loveForm, state=true) => {
+    let likeIcon  = media.querySelector(".like-icon");
+    let likeAmt   = media.querySelector(".like-amt");
+    if (state) {
+        likeIcon["src"] = LIKE_IMG["checked"];
+        likeAmt.innerText = parseInt(likeAmt.innerText) + 1;
     } else {
-        if (change) {
-            likeAmt.innerText = parseInt(likeAmt.innerText) - 1;
-            likeAmt.title = 0;
-            loveBtn.src = LOVE_IMG["unloved"];
-        } else loveBtn.src = LOVE_IMG["loved"];
+        likeIcon["src"] = LIKE_IMG["unchecked"];
+        likeAmt.innerText = parseInt(likeAmt.innerText) - 1;
     }
-};
-const loveMedia = (evt, media, loveBtn, loveForm) => {
-    loveBtn.addEventListener(evt, (evt) => {
-        loveCheckMedia(media, true);
-        loveForm.querySelector("input[name='media-id']").value = media["id"];
-        loveForm.querySelector("button[name='submit']").click();
-    });
+    mediaFormAction(media, loveForm);
 };
 
 const formPostReq = (form, actionPage) => {
@@ -73,10 +54,9 @@ const addUriParam = (key, valueArg) => {
     }
 };
 
-const getUriParam = (key) => {
-    let uri = window.location.href;
-    if (uri.indexOf(key + "=") == -1) return "";
-    return uri.split(key + "=")[1].split("&")[0];
+const getUriParam = (key, uri=window.location.href) => {
+    let uriParamValue = uri.split(key + "=")[1].split("&")[0];
+    return (uri.indexOf(key + "=") == -1) ? "" : uriParamValue;
 };
 
 const formatDate = (date) => {
@@ -105,7 +85,7 @@ const addPagin = (evt, paginElem) => {
 }
 
 const seeMore = (evt, cont) => {
-    let contText        = cont.querySelector(".media-text");
+    let contText        = cont.querySelector(".see-more-text");
     let contHeight      = parseInt(getComputedStyle(cont)["height"]);
     let contTextHeight  = parseInt(getComputedStyle(contText)["height"]);
     let seeMore = cont.parentElement.querySelector(".see-more");
@@ -115,3 +95,42 @@ const seeMore = (evt, cont) => {
         cont.style.maxHeight = "10000px";
     });
 }
+
+const getClassPair = (className, classPairName) => {
+    let pattern = classPairName + "{[a-zA-Z0-9-_]+:[a-zA-Z0-9-_]+}";
+    let regex = new RegExp(pattern, "g");
+    let result = className.match(regex);
+    return result ? result[0] : "";
+};
+
+const parseClassPair = (classPair) => {
+    let regex = /[a-zA-Z0-9-_]+:[a-zA-Z0-9-_]+/;
+    return classPair.match(regex)[0].split(":");
+};
+
+const setClassPairValue = (className, classPairName, newValue) => {
+    let classPair = getClassPair(className, classPairName);
+    let regex = /:[a-zA-Z0-9-_]+/;
+    let newClassPair = classPair.replace(regex, ":" + newValue);
+    return className.replace(classPair, newClassPair);
+};
+
+const isChecked = (element) => {
+    let checkPair = getClassPair(element.className, "check");
+    return parseClassPair(checkPair)[1] == 1 ? true : false;
+};
+
+const checkAction = (element, func_checked, func_unchecked) => {
+    if (isChecked(element)) func_checked();
+    else func_unchecked();
+};
+
+const checkSwitch = (element, func_checked=()=>{}, func_unchecked=()=>{}) => {
+    if (isChecked(element)) {
+        func_unchecked();
+        element.className = setClassPairValue(element.className, "check", 0);
+    } else {
+        func_checked();
+        element.className = setClassPairValue(element.className, "check", 1);
+    }
+};
