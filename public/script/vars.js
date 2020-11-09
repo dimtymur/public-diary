@@ -1,6 +1,6 @@
 const NEWLINER = "~_";
 
 const LIKE_IMG = {
-    "checked": "/img/icons/heart-checked-icon.png",
-    "unchecked": "/img/icons/heart-icon.png"
+    "checked": "/img/icons/like-checked-icon.png",
+    "unchecked": "/img/icons/like-icon.png"
 };

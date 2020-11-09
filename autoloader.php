@@ -10,7 +10,7 @@ function dir_walker($dir, $match="/./", &$results=[]) {
     } return $results;
 }
 
-function dimport_maker($paths, $reds=[DS."views", DS."inc"]) {
+function dimport_maker($paths, $reds=[DS."views", DS."app"]) {
     $red_path = function($path, $reds) {
         foreach ($reds as $red) if (strpos($path, $red)) return true;
         return false;

@@ -1,17 +1,17 @@
 <?php
 session_start();
 require_once $dimport["db/db_funcs.php"]["path"];
-require_once $dimport["inc/gen_funcs.php"]["path"];
+require_once $dimport["app/main_funcs.php"]["path"];
 
-if (empty($_GET["user-id"])) $get_error_page("404 Not Found", "/img/error/404.gif");
+if (empty($_GET["user-id"])) $get_error_page("404 Not Found", "/img/error/no_page.gif");
 
-$user = $records_get("mpd_user", "user_id", $_GET["user-id"]);
-if (empty($user)) $get_error_page("User Not Found", "/img/error/nouser.gif");
+$user = $records_get("pd_user", "user_id", $_GET["user-id"]);
+if (empty($user)) $get_error_page("User Not Found", "/img/error/no_user.gif");
 
-$user    = $user[0];
-$title   = $user["username"];
+$user   = $user[0];
+$title  = $user["username"];
 include_once $dimport["layouts/header.phtml"]["path"];
 require_once $dimport["post/post_sort_bar.phtml"]["path"];
-include_once $dimport["post/posts.phtml"]["path"];
+include_once $dimport["post/posts_cont.phtml"]["path"];
 include_once $dimport["layouts/colcade_import.phtml"]["path"];
 include_once $dimport["layouts/footer.phtml"]["path"];

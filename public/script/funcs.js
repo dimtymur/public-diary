@@ -55,8 +55,7 @@ const addUriParam = (key, valueArg) => {
 };
 
 const getUriParam = (key, uri=window.location.href) => {
-    let uriParamValue = uri.split(key + "=")[1].split("&")[0];
-    return (uri.indexOf(key + "=") == -1) ? "" : uriParamValue;
+    return (uri.indexOf(key + "=") == -1) ? "" : uri.split(key + "=")[1].split("&")[0];
 };
 
 const formatDate = (date) => {
@@ -88,7 +87,7 @@ const seeMore = (evt, cont) => {
     let contText        = cont.querySelector(".see-more-text");
     let contHeight      = parseInt(getComputedStyle(cont)["height"]);
     let contTextHeight  = parseInt(getComputedStyle(contText)["height"]);
-    let seeMore = cont.parentElement.querySelector(".see-more");
+    let seeMore         = cont.parentElement.querySelector(".see-more");
     if (contHeight < contTextHeight) seeMore.style.display = "block";
     seeMore.addEventListener(evt, () => {
         seeMore.style.display = "none";

@@ -1,0 +1,12 @@
+<?php
+function redirect($path) {
+	header("Location: ".$path); exit();
+}
+
+function get($name, $fallback="") {
+	return isset($_REQUEST[$name]) ? $_REQUEST[$name] : $fallback;
+}
+
+$get_error_page = function($title, $error_img) use ($dimport) {
+	require_once $dimport["error/error_page.phtml"]["path"]; exit();
+};

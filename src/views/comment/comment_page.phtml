@@ -3,14 +3,14 @@ session_start();
 require_once $dimport["security/csrf_prevent.php"]["path"];
 require_once $dimport["app/main_funcs.php"]["path"];
 
-if (empty($_GET["post-id"]))
-    redirect($dimport["home/home_page.phtml"]["redirect"]."&error=invalid-post-id");
+if (empty($_GET["user-id"]))
+    redirect($dimport["home/home_page.phtml"]["redirect"]."&error=invalid-user-id");
 
 require_once $dimport["db/db_funcs.php"]["path"];
 
-$posts = $records_get("post", "post_id", $_GET["post-id"]);
-if (empty($posts)) $get_error_page("Post Not Found", "/img/error/no_post.gif");
-$post = $posts[0];
+$user = $records_get("pd_user", "user_id", $_GET["user-id"]);
+if (empty($user)) $get_error_page("User Not Found", "/img/error/no_user.gif");
+$user = $user[0];
 
 require_once $dimport["comment/filter_comment.php"]["path"];
 
@@ -21,13 +21,11 @@ $query_comment = "SELECT * FROM $table
 
 $comments = $sql_query($query_comment);
 
-$title = $post["title"];
+$title = $user["username"]."'s Comments";
 include_once $dimport["layouts/header.phtml"]["path"]; ?>
 
 <div class="main-cont thin-cont block-middle">
     <?php
-    require_once $dimport["post/posts.phtml"]["path"];
-    require_once $dimport["comment/comment_input.phtml"]["path"];
     if (!empty($comments)) {
         require_once $dimport["comment/comment_sort_bar.phtml"]["path"];
         require_once $dimport["comment/comments.phtml"]["path"];

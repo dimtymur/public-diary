@@ -1,0 +1,23 @@
+<?php
+$alter = [
+    "post" => [
+        "delete"  => $dimport['post/delete_post.php']['redirect'],
+        "like"    => $dimport['post/like_post.php']['redirect']
+    ],
+    "comment" => [
+        "delete"  => $dimport['comment/delete_comment.php']['redirect'],
+        "like"    => $dimport['comment/like_comment.php']['redirect']
+    ]
+]; ?>
+
+<form class="<?= "$alter_form-delete-form" ?>" style="display: none;" action="<?= $alter[$alter_form]["delete"] ?>" method="POST">
+    <input name="media-id" type="text">
+    <?= $csrf_form_get ?>
+    <button name="submit" type="submit"></button>
+</form>
+
+<form class="<?= "$alter_form-love-form" ?>" style="display: none;" action="<?= $alter[$alter_form]["like"] ?>" method="POST">
+    <input name="media-id" type="text">
+    <?= $csrf_form_get ?>
+    <button name="submit" type="submit"></button>
+</form>

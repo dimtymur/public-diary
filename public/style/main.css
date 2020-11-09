@@ -50,6 +50,7 @@ a {
 
 .main-title {
     font-weight: bold;
+    word-break: break-all;
 }
 
 .main-input {
@@ -63,7 +64,6 @@ a {
 
 .main-textarea {
     height: 25px;
-    padding-top: 5px;
     resize: vertical;
     font-family: Noto Sans;
 }

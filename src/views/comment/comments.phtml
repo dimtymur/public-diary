@@ -1,0 +1,54 @@
+<?php
+$query_like   = "SELECT count(*) AS like_amt
+                 FROM comment_like
+                 WHERE comment_id = ?;";
+$query_liked  = "SELECT count(*) AS like_amt
+                 FROM comment_like
+                 WHERE comment_id = ?
+                 AND user_id = ?;";
+
+$post_page = $dimport["post/post_page.phtml"]["redirect"];
+foreach ($comments as $comment) {
+    $user      = $records_get("pd_user", "user_id", $comment["user_id"])[0];
+    $like_amt  = $sql_query($query_like, [$comment["comment_id"]])[0]["like_amt"];
+    $liked     = $sql_query($query_liked, [$comment["comment_id"], $_SESSION["u_id"]])[0]["like_amt"]; ?>
+    <div class="theme-box page-item media comment" id='<?= $comment["comment_id"] ?>'>
+        <div class="media-bar">
+            <a class="media-bar-item" href='index.php?page=profile/profile_page.phtml&user-id=<?= $user["user_id"] ?>'> <?= $user["username"] ?> </a>
+            <div class="media-bar-item media-bar-info main-date date"> <?= $comment["comment_dt"] ?> </div>
+            <div class="float-right">
+                <div class="dropdown" tabindex="0">
+                    <div class="dropdown-btn">• • •</div>
+                    <ul class="dropdown-cont position-right">
+                        <?php if ($_SESSION["u_id"] == $comment["user_id"]) { ?>
+                            <li class="dropdown-item comment-del-btn"> Delete </li>
+                            <li class="dropdown-item comment-edit-btn" href='<?= $post_page."&post-id=".$comment["post_id"]."&comment-id=".$comment["comment_id"] ?>'> Edit </li>
+                        <?php } else { ?>
+                            <li class="dropdown-item"> Report </li>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="media-cont">
+            <div class="media-text see-more-text"> <?= $comment["text"] ?> </div>
+        </div>
+        <div class="see-more"> See More </div>
+        <div class="media-bar">
+            <div class="media-bar-item like-btn">
+                <img class="invert-icon media-bar-icon like-icon check{state:<?= $liked ?>}" src="/img/icons/like-icon.png">
+                <div class="media-bar-icon-value like-amt"> <?= $like_amt ?> </div>
+            </div>
+            <div class="media-bar-item float-right">
+                <?php if (empty($post)) { ?>
+                    <a href="<?= $post_page."&post-id=".$comment["post_id"] ?>">
+                        <img class='invert-icon media-bar-icon' src='/img/icons/source-icon.png'>
+                    </a>
+                <?php } ?>
+            </div>
+        </div>
+    </div>
+<?php }
+
+$alter_form = "comment";
+require $dimport["media/alter_forms.phtml"]["path"];

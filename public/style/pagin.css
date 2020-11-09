@@ -9,6 +9,6 @@
     text-align: center;
 }
 
-.pagin-prev {
+.pagin-next {
     transform: scaleX(-1);
 }
