@@ -4,7 +4,7 @@ require_once $dimport["auth/accept_auth.php"]["path"];
 require_once $dimport["security/csrf_prevent.php"]["path"];
 
 $title = "Settings";
-include_once $dimport["layouts/header.phtml"]["path"]; ?>
+require_once $dimport["layouts/header.phtml"]["path"]; ?>
 
 <div class="main-cont thin-cont block-middle">
 	<form class="theme-box settings-cont" action="<?= $dimport["user/edit_user.php"]["redirect"] ?>" method="POST">
@@ -59,4 +59,4 @@ include_once $dimport["layouts/header.phtml"]["path"]; ?>
 	</form>
 </div>
 
-<?php include_once $dimport["layouts/footer.phtml"]["path"];
+<?php require_once $dimport["layouts/footer.phtml"]["path"];

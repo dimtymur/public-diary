@@ -4,7 +4,7 @@ require_once $dimport["auth/accept_auth.php"]["path"];
 require_once $dimport["security/csrf_prevent.php"]["path"];
 
 $title = "Post";
-include_once $dimport["layouts/header.phtml"]["path"];
+require_once $dimport["layouts/header.phtml"]["path"];
 
 if (!empty($_GET["post-id"])) {
 	require_once $dimport["db/db_funcs.php"]["path"];
@@ -37,4 +37,4 @@ if (empty($title) || empty($text)) {
     <button class="main-button card-button" type="submit" name="submit"> Post </button>
 </form>
 
-<?php include_once $dimport["layouts/footer.phtml"]["path"];
+<?php require_once $dimport["layouts/footer.phtml"]["path"];

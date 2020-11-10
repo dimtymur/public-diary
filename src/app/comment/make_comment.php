@@ -20,7 +20,7 @@ $post = $post[0];
 require_once $dimport["media/media_funcs.php"]["path"];
 
 $post_id_uri = "&post-id=".$post['post_id'];
-if (!empty($last_comment_ts) && $within_time($last_comment_ts[0]["comment_ts"], $time))
+if ($media_within_time("comment", "comment_ts", $_SESSION["u_id"], $timeout))
     redirect($dimport["post/post_page.phtml"]["redirect"]."$post_id_uri&error=frequent-comment");
 
 if (empty($_POST["text"]))

@@ -8,7 +8,7 @@ if (empty($search)) $search = "";
 $next = $sql_query($query_next, [$search, $search]); ?>
 
 <div class="pagin-cont">
-    <?php if ($pagin_page != 0) { ?>
+    <?php if ($pagin_page > 0) { ?>
         <img class="pagin-arrow pagin-prev invert-icon" src="/img/icons/arrow-icon.png">
     <?php } if (count($next) > 0) { ?>
         <img class="pagin-arrow pagin-next invert-icon" src="/img/icons/arrow-icon.png">

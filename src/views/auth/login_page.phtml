@@ -4,7 +4,7 @@ require_once $dimport["auth/accept_unauth.php"]["path"];
 require_once $dimport["security/csrf_prevent.php"]["path"];
 
 $title = "Login";
-include_once $dimport["layouts/header.phtml"]["path"]; ?>
+require_once $dimport["layouts/header.phtml"]["path"]; ?>
 
 <form class="theme-box card-box block-middle" action="<?= $dimport['auth/login.php']['redirect'] ?>" method="POST">
     <div class="main-title card-title"> Login to Your Account </div>
@@ -19,4 +19,4 @@ include_once $dimport["layouts/header.phtml"]["path"]; ?>
     <button class="main-button card-button" type="submit" name="submit"> Login </button>
 </form>
 
-<?php include_once $dimport["layouts/footer.phtml"]["path"];
+<?php require_once $dimport["layouts/footer.phtml"]["path"];

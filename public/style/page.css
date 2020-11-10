@@ -3,6 +3,20 @@
     grid-template-columns: 1fr 8fr;
 }
 
+.error-page {
+    padding: 10px;
+    text-align: center;
+}
+
+.main-cont {
+    grid-column: 2/3;
+    margin: 10px;
+}
+
+.thin-cont {
+    width: 70%;
+}
+
 .page-item {
     margin-bottom: 20px;
 }

@@ -4,7 +4,7 @@ require_once $dimport["auth/accept_unauth.php"]["path"];
 require_once $dimport["security/csrf_prevent.php"]["path"];
 
 $title = "Reset Password";
-include_once $dimport["layouts/header.phtml"]["path"]; ?>
+require_once $dimport["layouts/header.phtml"]["path"]; ?>
 
 <form class="theme-box card-box block-middle" action="<?= $dimport['user/reset_pwd_request.php']['redirect'] ?>" method="POST">
     <div class="main-title card-title"> Password Reset </div>
@@ -17,4 +17,4 @@ include_once $dimport["layouts/header.phtml"]["path"]; ?>
     <button class="main-button card-button" type="submit" name="submit"> Update </button>
 </form>
 
-<?php include_once $dimport["layouts/footer.phtml"]["path"];
+<?php require_once $dimport["layouts/footer.phtml"]["path"];

@@ -23,8 +23,8 @@ const posts           = document.querySelectorAll(".post");
 const postLoveForm    = document.querySelector(".post-love-form");
 const postDeleteForm  = document.querySelector(".post-delete-form");
 if (posts && postDeleteForm && postLoveForm) {
-    formPostReq(postLoveForm, "post/like_post.php");
-    formPostReq(postDeleteForm, "post/delete_post.php");
+    sendPostFormRequest(postLoveForm, "post/like_post.php");
+    sendPostFormRequest(postDeleteForm, "post/delete_post.php");
     for (let post of posts) {
         let postEditBtn    = post.querySelector(".post-edit-btn");
         let postDeleteBtn  = post.querySelector(".post-del-btn");
@@ -53,8 +53,8 @@ const comments           = document.querySelectorAll(".comment");
 const commentLoveForm    = document.querySelector(".comment-love-form");
 const commentDeleteForm  = document.querySelector(".comment-delete-form");
 if (comments && commentLoveForm && commentDeleteForm) {
-    formPostReq(commentLoveForm, "comment/like_comment.php");
-    formPostReq(commentDeleteForm, "comment/delete_comment.php");
+    sendPostFormRequest(commentLoveForm, "comment/like_comment.php");
+    sendPostFormRequest(commentDeleteForm, "comment/delete_comment.php");
     for (let comment of comments) {
         let commentEditBtn    = comment.querySelector(".comment-edit-btn");
         let commentDeleteBtn  = comment.querySelector(".comment-del-btn");

@@ -22,10 +22,10 @@ const likeAction = (media, loveForm, state=true) => {
     mediaFormAction(media, loveForm);
 };
 
-const formPostReq = (form, actionPage) => {
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        sendReqOnly(
+const sendPostFormRequest = (form, actionPage) => {
+    form.addEventListener("submit", (evt) => {
+        evt.preventDefault();
+        sendFormRequest(
             "http://localhost/index.php?page=" + actionPage,
             form,
             "POST"
@@ -33,7 +33,7 @@ const formPostReq = (form, actionPage) => {
     });
 };
 
-const sendReqOnly = (url, data, method) => {
+const sendFormRequest = (url, data, method) => {
     let fd = new FormData(data);
     let options = {
         method: method,
@@ -54,22 +54,23 @@ const addUriParam = (key, valueArg) => {
     }
 };
 
-const getUriParam = (key, uri=window.location.href) => {
+const getUriParam = (key) => {
+    let uri = window.location.href;
     return (uri.indexOf(key + "=") == -1) ? "" : uri.split(key + "=")[1].split("&")[0];
 };
 
 const formatDate = (date) => {
-    const monthNames = [
+    const months = [
         "January", "February", "March",
         "April", "May", "June", "July",
         "August", "September", "October",
         "November", "December"
     ];
-    let day       = date.getDate();
-    let monthInd  = date.getMonth();
-    let year      = date.getFullYear();
+    let day         = date.getDate();
+    let monthIndex  = date.getMonth();
+    let year        = date.getFullYear();
 
-    return monthNames[monthInd] + " " + day + ", " + year;
+    return months[monthIndex] + " " + day + ", " + year;
 };
 
 const addPagin = (evt, paginElem) => {

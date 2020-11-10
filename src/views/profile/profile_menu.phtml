@@ -28,7 +28,7 @@ $like_amt = $post_like_amt + $comment_like_amt; ?>
         </div>
     </div>
     <div class="profile-menu-nav">
-        <?php if ($user["user_id"] == $_SESSION["u_id"]) { ?>
+        <?php if (!empty($_SESSION["u_id"]) && $user["user_id"] == $_SESSION["u_id"]) { ?>
             <a href="<?= $dimport["home/settings_page.phtml"]["redirect"] ?>">
                 <button class='main-button card-button'> Settings </button>
             </a>

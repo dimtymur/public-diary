@@ -1,7 +1,7 @@
 <?php
 require_once $dimport["db/db_funcs.php"]["path"];
 
-$username_validate = function($username, $signup=true) use ($records_get) {
+$username_validate = function(string $username, bool $signup=true) use ($records_get) : bool {
     if (empty($username)) return false;
     if (!preg_match("/^[a-zA-Z0-9_-]{3,20}$/", $username)) return false;
     $user = $records_get("pd_user", "username", $username);
@@ -10,7 +10,7 @@ $username_validate = function($username, $signup=true) use ($records_get) {
     return true;
 };
 
-$password_validate = function($password, $passwd_confirm="", $signup=true) {
+$password_validate = function(string $password, string $passwd_confirm="", bool $signup=true) : bool {
     if (empty($password)) return false;
     if (strlen($password) < 8) return false;
     if (!empty($password_confirm)) {
@@ -19,7 +19,7 @@ $password_validate = function($password, $passwd_confirm="", $signup=true) {
     } return true;
 };
 
-$email_validate = function($email, $signup=true) use ($records_get) {
+$email_validate = function(string $email, bool $signup=true) use ($records_get) : bool {
     if (empty($email)) return false;
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) return false;
     $user = $records_get("pd_user", "email", $email);
@@ -28,7 +28,7 @@ $email_validate = function($email, $signup=true) use ($records_get) {
     return true;
 };
 
-$email_verify_send = function($user, $url, $subject, $opt=[]) use ($record_add, $records_delete) {
+$email_verify_send = function(array $user, string $url, string $subject, array $opt=[]) use ($record_add, $records_delete) : void {
     $records_delete("email_verify", "user_id", $user["user_id"]);
     $_SESSION["email_token"] = hash_hmac("sha256", "message", bin2hex(random_bytes(32)));
     $timeout = date("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s")." + 10 minutes"));
@@ -47,13 +47,13 @@ $email_verify_send = function($user, $url, $subject, $opt=[]) use ($record_add, 
     mail($email, "Public Diary | $subject", $message);
 };
 
-$email_verify_get = function($user_id) use ($records_get) {
-    if (empty($user_id)) return false;
+$email_verify_get = function(string $user_id) use ($records_get) : array {
+    if (empty($user_id)) return [];
     $email_verify = $records_get("email_verify", "user_id", $user_id);
-    return empty($email_verify) ? false : $email_verify[0];
+    return empty($email_verify) ? [] : $email_verify[0];
 };
 
-$email_verify_validate = function($email_verify) {
+$email_verify_validate = function(array $email_verify) : bool {
     if (empty($_SESSION["email_token"]) && empty($_GET["email-token"])) return false;
     if ($email_verify["email_token_dt"] < date("Y-m-d H:i:s")) return false;
     if (!hash_equals($email_verify["email_token"], $_GET["email-token"])) return false;

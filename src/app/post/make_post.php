@@ -9,7 +9,7 @@ if (!csrf_check($csrf_key))
 
 require_once $dimport["media/media_funcs.php"]["path"];
 
-if (!empty($last_post_ts) && $within_time($last_post_ts[0]["post_ts"], $time))
+if ($media_within_time("post", "post_ts", $_SESSION["u_id"], $timeout))
     redirect($dimport["post/make_post_page.phtml"]["redirect"]."&error=frequent-post");
 
 if (empty($_POST["title"]) || empty($_POST["text"]))

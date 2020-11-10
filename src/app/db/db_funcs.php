@@ -1,49 +1,49 @@
 <?php
 require_once $dimport["db/db_conn.php"]["path"];
 
-$sql_query = function($query, $temps=[]) use ($conn) {
+$sql_query = function(string $query, array $temps=[]) use ($conn) : array {
 	$sth = $conn->prepare($query);
 	$sth->execute($temps);
 
-	if (preg_match("/^SELECT\b/i", $query)) return $sth->fetchAll();
+	return (preg_match("/^SELECT\b/i", $query)) ? $sth->fetchAll() : [];
 };
 
-$record_add = function($table, $attrs) use ($conn) {
-	$cols_str = ""; $cols_temp = "";
-	foreach ($attrs as $col => $val) {
-		$cols_str .= ",$col"; $cols_temp .= ",?";
-		$vals[] = $val;
+$record_add = function(string $table, array $attrs) use ($conn) : void {
+	$columns_str = ""; $columns_temp = "";
+	foreach ($attrs as $column => $value) {
+		$columns_str .= ",$column"; $columns_temp .= ",?";
+		$values[] = $value;
 	}
-	$cols_str   = trim($cols_str, ",");
-	$cols_temp  = trim($cols_temp, ",");
+	$columns_str   = trim($columns_str, ",");
+	$columns_temp  = trim($columns_temp, ",");
 
-	$sql = "INSERT INTO $table ($cols_str) VALUES ($cols_temp);";
+	$sql = "INSERT INTO $table ($columns_str) VALUES ($columns_temp);";
 	$sth = $conn->prepare($sql);
-	$sth->execute($vals);
+	$sth->execute($values);
 };
 
-$records_delete = function($table, $id_col, $id_val) use ($conn) {
-	$sql = "DELETE FROM $table WHERE $id_col = ?;";
+$records_delete = function(string $table, string $id_column, string $id_value) use ($conn) : void {
+	$sql = "DELETE FROM $table WHERE $id_column = ?;";
 	$sth = $conn->prepare($sql);
-	$sth->execute([$id_val]);
+	$sth->execute([$id_value]);
 };
 
-$records_edit = function($table, $id_col, $id_val, $attrs) use ($conn) {
-	$cols_temp = "";
-	foreach ($attrs as $col => $val) {
-		$cols_temp .= ",$col=?"; $vals[] = $val;
+$records_edit = function(string $table, string $id_column, string $id_value, array $attrs) use ($conn) : void {
+	$columns_temp = "";
+	foreach ($attrs as $column => $value) {
+		$columns_temp .= ",$column=?"; $values[] = $value;
 	}
-	$vals[]     = $id_val;
-	$cols_temp  = trim($cols_temp, ",");
+	$values[]      = $id_value;
+	$columns_temp  = trim($cols_temp, ",");
 
-	$sql = "UPDATE $table SET $cols_temp WHERE $id_col = ?;";
+	$sql = "UPDATE $table SET $columns_temp WHERE $id_column = ?;";
 	$sth = $conn->prepare($sql);
-	$sth->execute($vals);
+	$sth->execute($values);
 };
 
-$records_get = function($table, $id_col, $id_val) use ($conn) {
-	$sql = "SELECT * FROM $table WHERE $id_col = ?;";
+$records_get = function(string $table, string $id_column, string $id_value) use ($conn) : array {
+	$sql = "SELECT * FROM $table WHERE $id_column = ?;";
 	$sth = $conn->prepare($sql);
-	$sth->execute([$id_val]);
+	$sth->execute([$id_value]);
 	return $sth->fetchAll();
 };
