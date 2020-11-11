@@ -20,7 +20,7 @@ if (medias)
     }
 
 const posts           = document.querySelectorAll(".post");
-const postLoveForm    = document.querySelector(".post-love-form");
+const postLoveForm    = document.querySelector(".post-like-form");
 const postDeleteForm  = document.querySelector(".post-delete-form");
 if (posts && postDeleteForm && postLoveForm) {
     sendPostFormRequest(postLoveForm, "post/like_post.php");
@@ -50,7 +50,7 @@ if (posts && postDeleteForm && postLoveForm) {
 }
 
 const comments           = document.querySelectorAll(".comment");
-const commentLoveForm    = document.querySelector(".comment-love-form");
+const commentLoveForm    = document.querySelector(".comment-like-form");
 const commentDeleteForm  = document.querySelector(".comment-delete-form");
 if (comments && commentLoveForm && commentDeleteForm) {
     sendPostFormRequest(commentLoveForm, "comment/like_comment.php");
@@ -103,3 +103,6 @@ if (dropdownFilters)
             let filterPair = parseClassPair(getClassPair(evt.target.className, "filter"));
             addUriParam(filterPair[0], filterPair[1]);
         });
+
+const uriErrorParam = getUriParam("error");
+if (uriErrorParam) alert(parseUriMessage(uriErrorParam));

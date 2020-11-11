@@ -5,7 +5,7 @@ $username_validate = function(string $username, bool $signup=true) use ($records
     if (empty($username)) return false;
     if (!preg_match("/^[a-zA-Z0-9_-]{3,20}$/", $username)) return false;
     $user = $records_get("pd_user", "username", $username);
-    if ($signup && count($user) > 0) return false;
+    if ($signup && count($user) != 0) return false;
     else if (!$signup && count($user) != 1) return false;
     return true;
 };
@@ -23,7 +23,7 @@ $email_validate = function(string $email, bool $signup=true) use ($records_get) 
     if (empty($email)) return false;
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) return false;
     $user = $records_get("pd_user", "email", $email);
-    if ($signup && count($user) > 0) return false;
+    if ($signup && count($user) != 0) return false;
     else if (!$signup && count($user) != 1) return false;
     return true;
 };

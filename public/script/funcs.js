@@ -84,6 +84,10 @@ const addPagin = (evt, paginElem) => {
     }
 }
 
+const parseUriMessage = (uriMessage) => {
+    return uriMessage.replace("-", " ").toUpperCase();
+}
+
 const seeMore = (evt, cont) => {
     let contText        = cont.querySelector(".see-more-text");
     let contHeight      = parseInt(getComputedStyle(cont)["height"]);
