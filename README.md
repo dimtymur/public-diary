@@ -14,12 +14,12 @@ $db_servername  = "localhost";
 $db_username    = "username";
 $db_password    = "password";
 ```
-**3. Email Setup With SSMTP**
+**3. Email Setup With SSMTP (for Linux)**
 
-Install ssmtp (if you are using an OS other than Linux, setup the email server according to your OS)
+Install ssmtp
 
 ```
-sudo apt install ssmtp (for Debian Distributions)
+sudo apt install ssmtp (for Debian Based Distributions)
 ```
 Open the **/etc/ssmtp/ssmtp.conf** file and make the following changes with your email information.
 ``` 
