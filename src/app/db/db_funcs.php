@@ -34,7 +34,7 @@ $records_edit = function(string $table, string $id_column, string $id_value, arr
 		$columns_temp .= ",$column=?"; $values[] = $value;
 	}
 	$values[]      = $id_value;
-	$columns_temp  = trim($cols_temp, ",");
+	$columns_temp  = trim($columns_temp, ",");
 
 	$sql = "UPDATE $table SET $columns_temp WHERE $id_column = ?;";
 	$sth = $conn->prepare($sql);

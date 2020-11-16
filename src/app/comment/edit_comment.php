@@ -39,8 +39,7 @@ if (empty($_POST["text"]))
 
 require_once $dimport["security/xss_prevent.php"]["path"];
 
-$text = xss_prevent(trim($_POST["text"]));
-$text = str_replace("\n", "~_", $text);
+$text = str_replace("\n", "~_", xss_prevent(trim($_POST["text"])));
 
 if (!(strlen($text) < 8000))
     redirect($dimport["post/post_page.phtml"]["redirect"]."$post_id_uri&error=invalid-input");

@@ -1,22 +1,22 @@
 const medias = document.querySelectorAll(".media");
 if (medias)
     for (let media of medias) {
-        let mediaCont  = media.querySelector(".media-cont");
-        let mediaText  = media.querySelector(".media-text");
+        let mediaCont      = media.querySelector(".media-cont");
+        let mediaContText  = media.querySelector(".see-more-text");
+        let seeMoreBar     = media.querySelector(".see-more");
+        let mediaText      = media.querySelector(".media-text");
+        let likeIcon       = media.querySelector(".like-icon");
 
-        let likeIcon  = media.querySelector(".like-icon");
-
-        checkAction(
-            likeIcon,
+        useCheck(
+            getPair(likeIcon.className, "check"),
             () => likeIcon["src"] = LIKE_IMG["checked"],
             () => likeIcon["src"] = LIKE_IMG["unchecked"]
         );
 
-        if (mediaText) {
-            let mediaTextRegex = new RegExp(NEWLINER, "g");
-            mediaText.innerText = mediaText.innerText.replace(mediaTextRegex, "\n");
-        }
-        if (mediaCont) seeMore("mousedown", mediaCont);
+        if (mediaText)
+            mediaText.innerText = mediaText.innerText.replace(new RegExp(NEWLINER, "g"), "\n");
+
+        if (mediaCont) seeMore("mousedown", seeMoreBar, mediaCont, mediaContText);
     }
 
 const posts           = document.querySelectorAll(".post");
@@ -28,17 +28,18 @@ if (posts && postDeleteForm && postLoveForm) {
     for (let post of posts) {
         let postEditBtn    = post.querySelector(".post-edit-btn");
         let postDeleteBtn  = post.querySelector(".post-del-btn");
+        let likeBtn        = post.querySelector(".like-btn");
+        let likeIcon       = post.querySelector(".like-icon");
+        let likeAmt        = post.querySelector(".like-amt");
 
-        let likeBtn   = post.querySelector(".like-btn");
-        let likeIcon  = post.querySelector(".like-icon");
-
-        likeBtn.addEventListener("click", () => {
-            checkSwitch(
-                likeIcon,
-                () => likeAction(post, postLoveForm),
-                () => likeAction(post, postLoveForm, false)
-            );
-        });
+        likeBtn.addEventListener("click", () =>
+            likeIcon.className = switchCheck(
+                likeIcon.className,
+                getPair(likeIcon.className, "check"),
+                () => likeAction(post, likeIcon, likeAmt, postLoveForm),
+                () => likeAction(post, likeIcon, likeAmt, postLoveForm, false)
+            )
+        );
 
         if (postDeleteBtn && postEditBtn) {
             postDeleteBtn.addEventListener("mousedown", () =>
@@ -58,17 +59,18 @@ if (comments && commentLoveForm && commentDeleteForm) {
     for (let comment of comments) {
         let commentEditBtn    = comment.querySelector(".comment-edit-btn");
         let commentDeleteBtn  = comment.querySelector(".comment-del-btn");
+        let likeBtn           = comment.querySelector(".like-btn");
+        let likeIcon          = comment.querySelector(".like-icon");
+        let likeAmt           = comment.querySelector(".like-amt");
 
-        let likeBtn   = comment.querySelector(".like-btn");
-        let likeIcon  = comment.querySelector(".like-icon");
-
-        likeBtn.addEventListener("click", () => {
-            checkSwitch(
-                likeIcon,
-                () => likeAction(comment, commentLoveForm),
-                () => likeAction(comment, commentLoveForm, false)
-            );
-        });
+        likeBtn.addEventListener("click", () =>
+            likeIcon.className = switchCheck(
+                likeIcon.className,
+                getPair(likeIcon.className, "check"),
+                () => likeAction(comment, likeIcon, likeAmt, commentLoveForm),
+                () => likeAction(comment, likeIcon, likeAmt, commentLoveForm, false)
+            )
+        );
 
         if (commentDeleteBtn && commentEditBtn) {
             commentDeleteBtn.addEventListener("mousedown", () =>
@@ -79,28 +81,27 @@ if (comments && commentLoveForm && commentDeleteForm) {
     }
 }
 
-let dates = document.querySelectorAll(".date");
+const dates = document.querySelectorAll(".date");
 for (let date of dates) date.innerText = formatDate(new Date(date.innerText));
 
 const searchForm = document.querySelector(".form-search");
 if (searchForm)
     searchForm.addEventListener("submit", (evt) => {
         evt.preventDefault();
-        let searchFormInput = searchForm.querySelector(".main-input");
-        addUriParam("search", searchFormInput.value);
+        addUriParam("search", searchForm.querySelector(".main-input").value);
     });
 
 const paginArrows = document.querySelectorAll(".pagin-arrow");
 if (paginArrows)
-    for (let paginArrow of paginArrows)
-        addPagin("mousedown", paginArrow);
+    for (let paginArrow of paginArrows) addPagin("mousedown", paginArrow);
 
 const dropdownFilters = document.querySelectorAll(".dropdown-filter");
 if (dropdownFilters)
     for (let dropdownFilter of dropdownFilters)
         dropdownFilter.addEventListener("mousedown", (evt) => {
-            if (!getClassPair(evt.target.className, "filter")) return;
-            let filterPair = parseClassPair(getClassPair(evt.target.className, "filter"));
+            if (!getPair(evt.target.className, "filter")) return;
+
+            let filterPair = parsePair(getPair(evt.target.className, "filter"));
             addUriParam(filterPair[0], filterPair[1]);
         });
 

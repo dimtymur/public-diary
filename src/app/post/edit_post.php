@@ -27,10 +27,8 @@ if ($post["user_id"] != $_SESSION["u_id"])
 
 require_once $dimport["security/xss_prevent.php"]["path"];
 
-$title  = xss_prevent(trim($_POST["title"]));
-$title  = str_replace("\n", "~_", $title);
-$text   = xss_prevent(trim($_POST["text"]));
-$text   = str_replace("\n", "~_", $text);
+$title  = str_replace("\n", "~_", xss_prevent(trim($_POST["title"])));
+$text   = str_replace("\n", "~_", xss_prevent(trim($_POST["text"])));
 
 $post_id_uri = "&post-id=".$post["post_id"];
 if (!(strlen($title) < 100) || !(strlen($text) < 10000))

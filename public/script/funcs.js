@@ -1,17 +1,16 @@
-const mediaFormAction = (media, mediaForm) => {
-    mediaForm.querySelector("input[name='media-id']").value = media.id;
+const mediaFormAction = (mediaId, mediaForm) => {
+    mediaForm.querySelector("input[name='media-id']").value = mediaId;
     mediaForm.querySelector("button[name='submit']").click();
 };
 
-const deleteAction = (media, deleteForm) => {
-    if (!confirm("Do you really want to delete it?")) return;
-    media.style.display = "none";
-    mediaFormAction(media, deleteForm);
+const deleteAction = (media, deleteForm, message="Do you really want to delete it?") => {
+    if (confirm(message)) {
+        media.style.display = "none";
+        mediaFormAction(media.id, deleteForm);
+    }
 };
 
-const likeAction = (media, loveForm, state=true) => {
-    let likeIcon  = media.querySelector(".like-icon");
-    let likeAmt   = media.querySelector(".like-amt");
+const likeAction = (media, likeIcon, likeAmt, loveForm, state=true) => {
     if (state) {
         likeIcon["src"] = LIKE_IMG["checked"];
         likeAmt.innerText = parseInt(likeAmt.innerText) + 1;
@@ -19,7 +18,7 @@ const likeAction = (media, loveForm, state=true) => {
         likeIcon["src"] = LIKE_IMG["unchecked"];
         likeAmt.innerText = parseInt(likeAmt.innerText) - 1;
     }
-    mediaFormAction(media, loveForm);
+    mediaFormAction(media.id, loveForm);
 };
 
 const sendPostFormRequest = (form, actionPage) => {
@@ -88,53 +87,45 @@ const parseUriMessage = (uriMessage) => {
     return uriMessage.replace("-", " ").toUpperCase();
 }
 
-const seeMore = (evt, cont) => {
-    let contText        = cont.querySelector(".see-more-text");
+const seeMore = (evt, seeMoreBar, cont, contText, maxHeight="10000px") => {
     let contHeight      = parseInt(getComputedStyle(cont)["height"]);
     let contTextHeight  = parseInt(getComputedStyle(contText)["height"]);
-    let seeMore         = cont.parentElement.querySelector(".see-more");
-    if (contHeight < contTextHeight) seeMore.style.display = "block";
-    seeMore.addEventListener(evt, () => {
-        seeMore.style.display = "none";
-        cont.style.maxHeight = "10000px";
+    if (contHeight < contTextHeight) seeMoreBar.style.display = "block";
+    seeMoreBar.addEventListener(evt, () => {
+        seeMoreBar.style.display = "none";
+        cont.style.maxHeight = maxHeight;
     });
 }
 
-const getClassPair = (className, classPairName) => {
-    let pattern = classPairName + "{[a-zA-Z0-9-_]+:[a-zA-Z0-9-_]+}";
+const getPair = (text, pairName) => {
+    let pattern = pairName + "{[a-zA-Z0-9-_]+:[a-zA-Z0-9-_]+}";
     let regex = new RegExp(pattern, "g");
-    let result = className.match(regex);
+    let result = text.match(regex);
     return result ? result[0] : "";
 };
 
-const parseClassPair = (classPair) => {
+const parsePair = (pair) => {
     let regex = /[a-zA-Z0-9-_]+:[a-zA-Z0-9-_]+/;
-    return classPair.match(regex)[0].split(":");
+    return pair.match(regex)[0].split(":");
 };
 
-const setClassPairValue = (className, classPairName, newValue) => {
-    let classPair = getClassPair(className, classPairName);
+const setTextPairValue = (text, pair, newPairValue) => {
     let regex = /:[a-zA-Z0-9-_]+/;
-    let newClassPair = classPair.replace(regex, ":" + newValue);
-    return className.replace(classPair, newClassPair);
+    let newPair = pair.replace(regex, ":" + newPairValue);
+    return text.replace(pair, newPair);
 };
 
-const isChecked = (element) => {
-    let checkPair = getClassPair(element.className, "check");
-    return parseClassPair(checkPair)[1] == 1 ? true : false;
-};
+const isChecked = (pair) => parsePair(pair)[1] == 1 ? true : false;
 
-const checkAction = (element, func_checked, func_unchecked) => {
-    if (isChecked(element)) func_checked();
-    else func_unchecked();
-};
+const useCheck = (pair, func_checked, func_unchecked) =>
+    isChecked(pair) ? func_checked() : func_unchecked();
 
-const checkSwitch = (element, func_checked=()=>{}, func_unchecked=()=>{}) => {
-    if (isChecked(element)) {
+const switchCheck = (text, pair, func_checked=()=>{}, func_unchecked=()=>{}) => {
+    if (isChecked(pair)) {
         func_unchecked();
-        element.className = setClassPairValue(element.className, "check", 0);
+        return setTextPairValue(text, pair, 0);
     } else {
         func_checked();
-        element.className = setClassPairValue(element.className, "check", 1);
+        return setTextPairValue(text, pair, 1);
     }
 };
