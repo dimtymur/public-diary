@@ -17,10 +17,8 @@ if (empty($_POST["title"]) || empty($_POST["text"]))
 
 require_once $dimport["security/xss_prevent.php"]["path"];
 
-$title  = xss_prevent(trim($_POST["title"]));
-$title  = str_replace("\n", NEWLINER, $title);
-$text   = xss_prevent(trim($_POST["text"]));
-$text   = str_replace("\n", NEWLINER, $text);
+$title  = str_replace("\n", NEWLINER, xss_prevent(trim($_POST["title"])));
+$text   = str_replace("\n", NEWLINER, xss_prevent(trim($_POST["text"])));
 
 if (!(strlen($title) < 100) || !(strlen($text) < 10000))
     redirect($dimport["post/make_post_page.phtml"]["redirect"]."&error=invalid-input");

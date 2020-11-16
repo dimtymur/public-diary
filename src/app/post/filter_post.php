@@ -39,7 +39,7 @@ if (!empty($_GET["sort"])) {
                       ON post_like.post_id = post.post_id
                       GROUP BY post_like.post_id) AS post";
     } else if ($_GET["sort"] == "comment") {
-        $order_by  = "comm_amt";
+        $order_by  = "comment_amt";
         $table     = "(SELECT post.*, COUNT(comment.post_id) AS comment_amt
                       FROM post JOIN comment
                       ON comment.post_id = post.post_id
