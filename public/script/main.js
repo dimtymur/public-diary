@@ -26,7 +26,6 @@ if (posts && postDeleteForm && postLoveForm) {
     sendPostFormRequest(postLoveForm, "post/like_post.php");
     sendPostFormRequest(postDeleteForm, "post/delete_post.php");
     for (let post of posts) {
-        let postEditBtn    = post.querySelector(".post-edit-btn");
         let postDeleteBtn  = post.querySelector(".post-del-btn");
         let likeBtn        = post.querySelector(".like-btn");
         let likeIcon       = post.querySelector(".like-icon");
@@ -41,12 +40,8 @@ if (posts && postDeleteForm && postLoveForm) {
             )
         );
 
-        if (postDeleteBtn && postEditBtn) {
-            postDeleteBtn.addEventListener("mousedown", () =>
-                deleteAction(post, postDeleteForm));
-            postEditBtn.addEventListener("mousedown", () =>
-                window.location.href = postEditBtn.getAttribute("href"));
-        }
+        if (postDeleteBtn)
+            postDeleteBtn.addEventListener("click", () => deleteAction(post, postDeleteForm));
     }
 }
 
@@ -57,7 +52,6 @@ if (comments && commentLoveForm && commentDeleteForm) {
     sendPostFormRequest(commentLoveForm, "comment/like_comment.php");
     sendPostFormRequest(commentDeleteForm, "comment/delete_comment.php");
     for (let comment of comments) {
-        let commentEditBtn    = comment.querySelector(".comment-edit-btn");
         let commentDeleteBtn  = comment.querySelector(".comment-del-btn");
         let likeBtn           = comment.querySelector(".like-btn");
         let likeIcon          = comment.querySelector(".like-icon");
@@ -72,12 +66,8 @@ if (comments && commentLoveForm && commentDeleteForm) {
             )
         );
 
-        if (commentDeleteBtn && commentEditBtn) {
-            commentDeleteBtn.addEventListener("mousedown", () =>
-                deleteAction(comment, commentDeleteForm));
-            commentEditBtn.addEventListener("mousedown", () =>
-                window.location.href = commentEditBtn.getAttribute("href"));
-        }
+        if (commentDeleteBtn)
+            commentDeleteBtn.addEventListener("click", () => deleteAction(comment, commentDeleteForm));
     }
 }
 
@@ -93,17 +83,17 @@ if (searchForm)
 
 const paginArrows = document.querySelectorAll(".pagin-arrow");
 if (paginArrows)
-    for (let paginArrow of paginArrows) addPagin("mousedown", paginArrow);
+    for (let paginArrow of paginArrows) addPagin("click", paginArrow);
 
-const dropdownFilters = document.querySelectorAll(".dropdown-filter");
-if (dropdownFilters)
-    for (let dropdownFilter of dropdownFilters)
-        dropdownFilter.addEventListener("mousedown", (evt) => {
-            if (!getPair(evt.target.className, "filter")) return;
+const dropdownUriParams = document.querySelectorAll(".dropdown-uriparam");
+if (dropdownUriParams)
+    for (let dropdownUriParam of dropdownUriParams)
+        dropdownUriParam.addEventListener("click", (evt) => {
+            if (!getPair(evt.target.className, "uriparam")) return;
 
-            let filterPair = parsePair(getPair(evt.target.className, "filter"));
-            addUriParam(filterPair[0], filterPair[1]);
+            let uriParamPair = parsePair(getPair(evt.target.className, "uriparam"));
+            addUriParam(uriParamPair[0], uriParamPair[1]);
         });
 
-const uriErrorParam = getUriParam("error");
-if (uriErrorParam) alert(parseUriMessage(uriErrorParam));
+const errorUriParam = getUriParam("error");
+if (errorUriParam) alert(parseUriMessage(errorUriParam));

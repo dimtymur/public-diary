@@ -21,7 +21,9 @@ foreach ($comments as $comment) {
                         <div class="dropdown-btn">• • •</div>
                         <ul class="dropdown-cont position-right">
                             <li class="dropdown-item comment-del-btn"> Delete </li>
-                            <li class="dropdown-item comment-edit-btn" href='<?= $dimport["post/post_page.phtml"]["redirect"]."&post-id=".$comment["post_id"]."&comment-id=".$comment["comment_id"] ?>'> Edit </li>
+                            <a href='<?= $dimport["post/post_page.phtml"]["redirect"]."&post-id=".$comment["post_id"]."&comment-id=".$comment["comment_id"] ?>'>
+                                <li class="dropdown-item comment-edit-btn"> Edit </li>
+                            </a>
                         </ul>
                     </div>
                 <?php } ?>

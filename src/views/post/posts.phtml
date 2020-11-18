@@ -25,7 +25,9 @@ foreach ($posts as $post) {
                         <div class="dropdown-btn">• • •</div>
                         <ul class="dropdown-cont position-right">
                             <li class="dropdown-item post-del-btn"> Delete </li>
-                            <li class="dropdown-item post-edit-btn" href='<?= $dimport["post/make_post_page.phtml"]["redirect"]."&post-id=".$post["post_id"] ?>'> Edit </li>
+                            <a href='<?= $dimport["post/make_post_page.phtml"]["redirect"]."&post-id=".$post["post_id"] ?>'>
+                                <li class="dropdown-item post-edit-btn"> Edit </li>
+                            </a>
                         </ul>
                     </div>
                 <?php } ?>

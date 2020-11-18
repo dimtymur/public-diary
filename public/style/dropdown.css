@@ -3,10 +3,10 @@
     position: relative;
     cursor: pointer;
 }
-.dropdown:focus .dropdown-btn {
+.dropdown:focus-within .dropdown-btn {
     background-color: var(--theme-color);
 }
-.dropdown:focus .dropdown-cont {
+.dropdown:focus-within .dropdown-cont {
     display: block;
 }
 
