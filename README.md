@@ -6,7 +6,7 @@ Set the document root on your server to **/public**
 
 **2. Database Setup**
 
-The SQL data file is the **/src/app/db/sql_temp.sql** file. Simply execute it on the SQL shell.
+The SQL data file is the **/src/app/db/db_temp.sql** file. Simply execute it on the SQL shell.
 
 The database connection with PHP is done in the **/src/app/db/db_conn.php** file. Change the variable values according to your database settings.
 ```
