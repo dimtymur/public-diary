@@ -1,8 +1,6 @@
 .make-comment-cont {
-    margin-bottom: 20px;
-    padding: 10px;
+    margin-bottom: var(--space-l);
+    padding: var(--space-m);
 }
 
-.comment-textarea {
-    width: 99%;
-}
+.comment-textarea { width: 99%; }

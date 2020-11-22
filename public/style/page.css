@@ -3,24 +3,11 @@
     grid-template-columns: 1fr 8fr;
 }
 
-.error-page {
-    padding: 10px;
-    text-align: center;
-}
-
 .main-cont {
     grid-column: 2/3;
-    margin: 10px;
+    margin: var(--space-m);
 }
 
-.thin-cont {
-    width: 70%;
-}
+.thin-cont { width: 70%; }
 
-.page-item {
-    margin-bottom: 20px;
-}
-
-.sort-bar-input {
-    margin: 5px 10px;
-}
+.page-item { margin-bottom: var(--space-l); }

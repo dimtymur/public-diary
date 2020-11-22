@@ -1,9 +1,11 @@
 body {
-    background-color: var(--back-color-d);
     margin: 0;
+
+    background-color: var(--back-color-d);
     color: var(--font-color);
+
     font-family: Noto Sans;
-    font-size: var(--font-m);
+    font-size: var(--font-s);
 }
 
 a {
@@ -16,8 +18,10 @@ a {
     border: 1px var(--back-color-l) solid;
 }
 
-.float-right {
-    float: right;
+.block-middle {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .block-right {
@@ -25,56 +29,85 @@ a {
     margin-left: auto;
 }
 
-.position-right {
-    right: 0;
-}
+.float-right { float: right; }
 
-.block-middle {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
+.position-right { right: 0; }
 
-.invert-icon {
-    filter: var(--icon-invert);
-}
+.invert-icon { filter: var(--icon-invert); }
 
 .main-title {
     font-weight: bold;
     word-break: break-all;
 }
 
+.main-section { background-color: var(--back-color-d); }
+
 .main-input {
+    padding-left: var(--space-s);
+
     background-color: var(--back-color-d);
     color: var(--font-color);
     border: none;
     border: 1px solid var(--back-color-l);
-    padding-left: 5px;
-    font-size: var(--font-m);
+
+    font-size: var(--font-s);
 }
 
 .main-textarea {
     height: 25px;
     resize: vertical;
+
     font-family: Noto Sans;
 }
 
 .main-button {
+    padding: var(--space-s) var(--space-m);
+
     background-color: var(--theme-color);
-    padding: 3px;
-    padding-right: 10px;
-    padding-left: 10px;
-    font-size: var(--font-m);
     color: var(--font-color);
     border: none;
+
+    font-size: var(--font-s);
+
     cursor: pointer;
 }
 
 .main-info-text {
     display: inline-block;
-    padding-right: 5px;
+
+    padding-right: var(--space-s);
 }
 .main-info-text:not(:last-child) {
     border-right-width: 6px;
     border-right-style: dotted;
+}
+
+.main-menu-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    grid-gap: var(--space-s);
+}
+
+.main-menu-bar {
+    position: relative;
+
+    padding: var(--space-s) var(--space-m);
+    margin-bottom: var(--space-m);
+}
+
+.main-menu-bar-key { display: inline-block; }
+
+.main-menu-bar-value {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    padding: var(--space-s);
+
+    color: var(--font-color-l);
+}
+
+.main-menu-bar-icon {
+    width: var(--font-s);
+    padding-right: var(--space-s);
 }

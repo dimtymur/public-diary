@@ -1,15 +1,14 @@
 .post-title {
-    font-size: var(--font-xl);
+    padding: var(--space-m);
+
+    font-size: var(--font-l);
     text-align: center;
-    padding: 10px;
 }
 
 .post-page-cont {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
+    grid-gap: var(--space-l);
 }
 
-.post-textarea {
-    height: 250px;
-}
+.post-textarea { height: 250px; }

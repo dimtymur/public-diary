@@ -1,34 +1,8 @@
-.profile-menu-title {
-    margin: 15px;
-    font-size: var(--font-l);
+.profile-title {
+    margin: var(--space-l);
+
+    font-size: var(--font-m);
     text-align: center;
 }
 
-.profile-section {
-    margin: 20px 10px;
-}
-
-.profile-menu-desc {
-    background-color: var(--back-color-d);
-    padding: 5px 10px;
-    margin-bottom: 10px;
-}
-
-.profile-menu-desc-key {
-    display: inline;
-}
-
-.profile-menu-desc-value {
-    color: var(--font-color-l);
-}
-
-.profile-menu-desc-icon {
-    width: var(--font-m);
-    padding-right: 5px;
-}
-
-.profile-menu-nav {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-    grid-gap: 5px;
-}
+.profile-section { margin: var(--space-l) var(--space-m); }
