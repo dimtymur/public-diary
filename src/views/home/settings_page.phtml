@@ -47,11 +47,11 @@ require_once $dimport["layouts/header.phtml"]["path"]; ?>
 		<div class="main-section settings-section settings-menu">
 	        <div class="settings-menu-item">
 	            <div class="main-title"> Password </div>
-	            <input class="main-input settings-input" name="password" type="password" pattern=".{7,}">
+	            <input class="main-input settings-input" name="password" type="password" pattern=".{7,}" required>
 	        </div>
 	        <div class="settings-menu-item">
 	            <div class="main-title"> Password (Repeat) </div>
-	            <input class="main-input settings-input" name="password-confirm" type="password" pattern=".{7,}">
+	            <input class="main-input settings-input" name="password-confirm" type="password" pattern=".{7,}" required>
 	        </div>
 	    </div>
 		<?= $csrf_form_get ?>

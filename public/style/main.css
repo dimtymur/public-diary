@@ -4,7 +4,7 @@ body {
     background-color: var(--back-color-d);
     color: var(--font-color);
 
-    font-family: Noto Sans;
+    font-family: Arial;
     font-size: var(--font-s);
 }
 
@@ -57,7 +57,7 @@ a {
     height: 25px;
     resize: vertical;
 
-    font-family: Noto Sans;
+    font-family: Arial;
 }
 
 .main-button {
