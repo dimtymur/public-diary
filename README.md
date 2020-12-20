@@ -23,20 +23,20 @@ sudo apt install ssmtp (for Debian Based Distributions)
 ```
 Open the **/etc/ssmtp/ssmtp.conf** file and make the following changes with your email information.
 ``` 
-root=your_email@email.com
+root=user@email.com
 mailhub=smtp.email.com:587
 hostname=localhost
-AuthUser=your_email@email.com
-AuthPass=your_password
+AuthUser=user@email.com
+AuthPass=password
 UseSTARTTLS=yes
 UseTLS=yes
 FromLineOverride=yes
 ```
 Open the **/etc/ssmtp/revaliases** file and make the following changes with your email information.
 ```
-root:your_email@email.com:smtp.email.com:587
+root:user@email.com:smtp.email.com:587
 ```
-Open the **/etc/php/7.2/fpm/php.ini** file and make the following change.
+Open the **/etc/php/8.0/fpm/php.ini** file and make the following change.
 ```
 ;sendmail_path
 sendmail_path = ssmtp -t -i
